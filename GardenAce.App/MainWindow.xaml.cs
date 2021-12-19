@@ -29,25 +29,6 @@ namespace GardenAce.App
         {
             InitializeComponent();
 
-            // Create a red Ellipse.
-
-            // Create a SolidColorBrush with a red color to fill the
-            // Ellipse with.
-            SolidColorBrush mySolidColorBrush = new SolidColorBrush();
-
-            // Describes the brush's color using RGB values.
-            // Each value has a range of 0-255.
-            mySolidColorBrush.Color = Color.FromArgb(255, 255, 255, 0);
-            myEllipse.Fill = mySolidColorBrush;
-            myEllipse.StrokeThickness = 2;
-            myEllipse.Stroke = Brushes.Black;
-
-            // Set the width and height of the Ellipse.
-            myEllipse.Width = 200;
-            myEllipse.Height = 100;
-
-            // Add the Ellipse to the StackPanel.
-            //panelPlot.Children.Add(myEllipse);
             
             // Declare scene objects.
             Model3DGroup myModel3DGroup = new Model3DGroup();
@@ -60,10 +41,10 @@ namespace GardenAce.App
             PerspectiveCamera myPCamera = new PerspectiveCamera();
 
             // Specify where in the 3D scene the camera is.
-            myPCamera.Position = new Point3D(0, 0, 2);
+            myPCamera.Position = new Point3D(35, -40, 70);
 
             // Specify the direction that the camera is pointing.
-            myPCamera.LookDirection = new Vector3D(0, 0, -1);
+            myPCamera.LookDirection = new Vector3D(0.3, 0.8, -1);
 
             // Define camera's horizontal field of view in degrees.
             myPCamera.FieldOfView = 60;
@@ -98,12 +79,12 @@ namespace GardenAce.App
 
             // Create a collection of vertex positions for the MeshGeometry3D.
             Point3DCollection myPositionCollection = new Point3DCollection();
-            myPositionCollection.Add(new Point3D(-0.5, -0.5, 0.5));
-            myPositionCollection.Add(new Point3D(0.5, -0.5, 0.5));
-            myPositionCollection.Add(new Point3D(0.5, 0.5, 0.5));
-            myPositionCollection.Add(new Point3D(0.5, 0.5, 0.5));
-            myPositionCollection.Add(new Point3D(-0.5, 0.5, 0.5));
-            myPositionCollection.Add(new Point3D(-0.5, -0.5, 0.5));
+            myPositionCollection.Add(new Point3D(0, 0, 0));
+            myPositionCollection.Add(new Point3D(30, 0, 0));
+            myPositionCollection.Add(new Point3D(30, 200, 0));
+            myPositionCollection.Add(new Point3D(30, 200, 0));
+            myPositionCollection.Add(new Point3D(0, 200, 0));
+            myPositionCollection.Add(new Point3D(0, 0, 0));
             myMeshGeometry3D.Positions = myPositionCollection;
 
             // Create a collection of texture coordinates for the MeshGeometry3D.
@@ -147,17 +128,26 @@ namespace GardenAce.App
             DiffuseMaterial myMaterial = new DiffuseMaterial(mySolidColorBrush1);
             myGeometryModel.Material = myMaterial;
 
-            // Apply a transform to the object. In this sample, a rotation transform is applied,
-            // rendering the 3D object rotated.
-            RotateTransform3D myRotateTransform3D = new RotateTransform3D();
-            AxisAngleRotation3D myAxisAngleRotation3d = new AxisAngleRotation3D();
-            myAxisAngleRotation3d.Axis = new Vector3D(0, 3, 0);
-            myAxisAngleRotation3d.Angle = 40;
-            myRotateTransform3D.Rotation = myAxisAngleRotation3d;
-            myGeometryModel.Transform = myRotateTransform3D;
+            //// Apply a transform to the object. In this sample, a rotation transform is applied,
+            //// rendering the 3D object rotated.
+            //RotateTransform3D myRotateTransform3D = new RotateTransform3D();
+            //AxisAngleRotation3D myAxisAngleRotation3d = new AxisAngleRotation3D();
+            //myAxisAngleRotation3d.Axis = new Vector3D(0, 3, 0);
+            //myAxisAngleRotation3d.Angle = 40;
+            //myRotateTransform3D.Rotation = myAxisAngleRotation3d;
+            //myGeometryModel.Transform = myRotateTransform3D;
 
             // Add the geometry model to the model group.
             myModel3DGroup.Children.Add(myGeometryModel);
+
+
+            GeometryModel3D myCube = new GeometryModel3D();
+            MeshGeometry3D myCubeMesh3D = CreateCube(new Point3D(17, 20, 5), 10.0);
+
+            myCube.Geometry = myCubeMesh3D;
+            myCube.Material = new DiffuseMaterial(new SolidColorBrush(Color.FromRgb(255, 250, 245)));
+
+            myModel3DGroup.Children.Add(myCube);
 
             // Add the group of models to the ModelVisual3d.
             myModelVisual3D.Content = myModel3DGroup;
@@ -174,6 +164,84 @@ namespace GardenAce.App
             drawingContext.DrawRectangle(Brushes.Red, new Pen(Brushes.Black, 5), new Rect(20, 20, 250, 250));
 
             base.OnRender(drawingContext);
+        }
+        public static MeshGeometry3D CreateCube(Point3D inCenter, double length)
+        {
+            MeshGeometry3D mesh = new MeshGeometry3D();
+
+            Point3D p1 = new Point3D(inCenter.X - length / 2, inCenter.Y + length / 2, inCenter.Z + length / 2);
+            Point3D p2 = new Point3D(inCenter.X + length / 2, inCenter.Y + length / 2, inCenter.Z + length / 2);
+            Point3D p3 = new Point3D(inCenter.X + length / 2, inCenter.Y + length / 2, inCenter.Z - length / 2);
+            Point3D p4 = new Point3D(inCenter.X - length / 2, inCenter.Y + length / 2, inCenter.Z - length / 2);
+            Point3D p5 = new Point3D(inCenter.X - length / 2, inCenter.Y - length / 2, inCenter.Z + length / 2);
+            Point3D p6 = new Point3D(inCenter.X + length / 2, inCenter.Y - length / 2, inCenter.Z + length / 2);
+            Point3D p7 = new Point3D(inCenter.X + length / 2, inCenter.Y - length / 2, inCenter.Z - length / 2);
+            Point3D p8 = new Point3D(inCenter.X - length / 2, inCenter.Y - length / 2, inCenter.Z - length / 2);
+
+            mesh.Positions.Add(p1);
+            mesh.Positions.Add(p2);
+            mesh.Positions.Add(p3);
+            mesh.Positions.Add(p4);
+            mesh.Positions.Add(p5);
+            mesh.Positions.Add(p6);
+            mesh.Positions.Add(p7);
+            mesh.Positions.Add(p8);
+
+            // gornja ploha
+            mesh.TriangleIndices.Add(0);
+            mesh.TriangleIndices.Add(1);
+            mesh.TriangleIndices.Add(2);
+
+            mesh.TriangleIndices.Add(0);
+            mesh.TriangleIndices.Add(2);
+            mesh.TriangleIndices.Add(3);
+
+            // donja ploha
+            mesh.TriangleIndices.Add(4);
+            mesh.TriangleIndices.Add(6);
+            mesh.TriangleIndices.Add(5);
+
+            mesh.TriangleIndices.Add(4);
+            mesh.TriangleIndices.Add(7);
+            mesh.TriangleIndices.Add(6);
+
+            // srednja 1 ploha
+            mesh.TriangleIndices.Add(0);
+            mesh.TriangleIndices.Add(5);
+            mesh.TriangleIndices.Add(1);
+
+            mesh.TriangleIndices.Add(0);
+            mesh.TriangleIndices.Add(4);
+            mesh.TriangleIndices.Add(5);
+
+            // srednja 2 ploha
+            mesh.TriangleIndices.Add(1);
+            mesh.TriangleIndices.Add(5);
+            mesh.TriangleIndices.Add(6);
+
+            mesh.TriangleIndices.Add(1);
+            mesh.TriangleIndices.Add(6);
+            mesh.TriangleIndices.Add(2);
+
+            // srednja 3 ploha
+            mesh.TriangleIndices.Add(2);
+            mesh.TriangleIndices.Add(6);
+            mesh.TriangleIndices.Add(7);
+
+            mesh.TriangleIndices.Add(2);
+            mesh.TriangleIndices.Add(7);
+            mesh.TriangleIndices.Add(3);
+
+            // srednja 4 ploha
+            mesh.TriangleIndices.Add(3);
+            mesh.TriangleIndices.Add(7);
+            mesh.TriangleIndices.Add(4);
+
+            mesh.TriangleIndices.Add(3);
+            mesh.TriangleIndices.Add(4);
+            mesh.TriangleIndices.Add(0);
+
+            return mesh;
         }
     }
 }
