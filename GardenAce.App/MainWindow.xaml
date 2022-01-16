@@ -15,7 +15,7 @@
             <Canvas Width="321" Height="201">
 
                 <!-- The Viewport3D provides a rendering surface for 3-D visual content. -->
-                <Viewport3D Name="myViewport3D" ClipToBounds="True" Width="150" Height="150" Canvas.Left="0" Canvas.Top="10">
+                <Viewport3D Name="myViewport3D" ClipToBounds="True" Width="200" Height="200" Canvas.Left="0" Canvas.Top="10">
 
                     <!-- Defines the camera used to view the 3D object. --><!--
                     <Viewport3D.Camera>

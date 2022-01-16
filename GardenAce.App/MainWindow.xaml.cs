@@ -41,10 +41,10 @@ namespace GardenAce.App
             PerspectiveCamera myPCamera = new PerspectiveCamera();
 
             // Specify where in the 3D scene the camera is.
-            myPCamera.Position = new Point3D(35, -40, 70);
+            myPCamera.Position = new Point3D(-15, -50, 80);
 
             // Specify the direction that the camera is pointing.
-            myPCamera.LookDirection = new Vector3D(0.3, 0.8, -1);
+            myPCamera.LookDirection = new Vector3D(0, 1, -1);
 
             // Define camera's horizontal field of view in degrees.
             myPCamera.FieldOfView = 60;
