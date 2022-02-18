@@ -26,6 +26,9 @@ namespace GardenAce.App
     Ellipse myEllipse = new Ellipse();
     PerspectiveCamera myPCamera = new PerspectiveCamera();
 
+    private bool _bLButtonDown = false;
+    private Point _lastMousePos;
+
     public MainWindow()
     {
       InitializeComponent();
@@ -243,25 +246,32 @@ namespace GardenAce.App
 
     private void Window_MouseDown(object sender, MouseButtonEventArgs e)
     {
-      var pnt = myPCamera.Position;
-      myPCamera.Position = new Point3D(pnt.X + 1, pnt.Y, pnt.Z);
-
-      myViewport3D.InvalidateVisual();
     }
 
     private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
     {
-
+      _bLButtonDown = true;
+      _lastMousePos = e.GetPosition(this);
     }
 
     private void Window_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
     {
-
+      _bLButtonDown = false;
     }
 
     private void Window_MouseMove(object sender, MouseEventArgs e)
     {
+      if( _bLButtonDown )
+      {
+        var newPos = e.GetPosition(this);
+        var diffX = newPos.X - _lastMousePos.X;
+        var diffY = newPos.Y - _lastMousePos.Y;
 
+        var pnt = myPCamera.Position;
+        myPCamera.Position = new Point3D(pnt.X + diffX/100.0f, pnt.Y - diffY/100.0, pnt.Z);
+
+        myViewport3D.InvalidateVisual();
+      }
     }
   }
 }
