@@ -5,11 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GardenAce.App"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" Background="White">
-    <!--<Grid>
-        <StackPanel x:Name="panelPlot" Margin="0,0,0,195"/>
-
-    </Grid>-->
+        Title="MainWindow" Height="450" Width="800" Background="White" MouseDown="Window_MouseDown">
     <DockPanel>
         <Viewbox>
             <Canvas Width="321" Height="201">

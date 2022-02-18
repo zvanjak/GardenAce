@@ -24,11 +24,11 @@ namespace GardenAce.App
     public partial class MainWindow : Window
     {
         Ellipse myEllipse = new Ellipse();
+    PerspectiveCamera myPCamera = new PerspectiveCamera();
 
-        public MainWindow()
+    public MainWindow()
         {
             InitializeComponent();
-
             
             // Declare scene objects.
             Model3DGroup myModel3DGroup = new Model3DGroup();
@@ -38,7 +38,6 @@ namespace GardenAce.App
             // Defines the camera used to view the 3D object. In order to view the 3D object,
             // the camera must be positioned and pointed such that the object is within view
             // of the camera.
-            PerspectiveCamera myPCamera = new PerspectiveCamera();
 
             // Specify where in the 3D scene the camera is.
             myPCamera.Position = new Point3D(-15, -50, 80);
@@ -243,5 +242,10 @@ namespace GardenAce.App
 
             return mesh;
         }
+
+    private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+    {
+
     }
+  }
 }
