@@ -248,5 +248,20 @@ namespace GardenAce.App
 
       myViewport3D.InvalidateVisual();
     }
+
+    private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+    {
+
+    }
+
+    private void Window_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+    {
+
+    }
+
+    private void Window_MouseMove(object sender, MouseEventArgs e)
+    {
+
+    }
   }
 }
