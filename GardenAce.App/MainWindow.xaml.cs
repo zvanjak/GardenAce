@@ -27,6 +27,7 @@ namespace GardenAce.App
     PerspectiveCamera myPCamera = new PerspectiveCamera();
 
     private bool _bLButtonDown = false;
+    private bool _bRightButtonDown = false;
     private Point _lastMousePos;
 
     public MainWindow()
@@ -272,6 +273,21 @@ namespace GardenAce.App
 
         myViewport3D.InvalidateVisual();
       }
+
+      if( _bRightButtonDown )
+      {
+
+      }
+    }
+
+    private void Window_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+    {
+      _bRightButtonDown = true;
+    }
+
+    private void Window_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
+    {
+      _bRightButtonDown = false;
     }
   }
 }
