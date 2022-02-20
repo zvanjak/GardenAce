@@ -66,10 +66,24 @@ namespace GardenAce.App
       myGeometryModel = CreateInitial();
       myModel3DGroup.Children.Add(myGeometryModel);
 
-      MeshGeometry3D myCubeMesh3D = CreateCube(new Point3D(17, 20, 5), 10.0);
-      var myCubeMaterial = new DiffuseMaterial(new SolidColorBrush(Color.FromRgb(255, 250, 245)));
-      GeometryModel3D myCube = new GeometryModel3D(myCubeMesh3D, myCubeMaterial);
-      myModel3DGroup.Children.Add(myCube);
+      MeshGeometry3D podloga = CreateParallelepiped(new Point3D(0, 100, -0.1), 100.0, 300.0, 0.01);
+      var podlogaMaterial = new DiffuseMaterial(new SolidColorBrush(Colors.LightGray));
+      GeometryModel3D podlogaModel = new GeometryModel3D(podloga, podlogaMaterial);
+      myModel3DGroup.Children.Add(podlogaModel);
+
+      MeshGeometry3D Teretana = CreateParallelepiped(new Point3D(4.5, 10.5, 1.5), 6.5, 20.8, 2.5);
+      var teretanaMaterial = new DiffuseMaterial(new SolidColorBrush(Colors.Gray));
+      GeometryModel3D teretanaModel = new GeometryModel3D(Teretana, teretanaMaterial);
+      myModel3DGroup.Children.Add(teretanaModel);
+
+      MeshGeometry3D kuca = CreateParallelepiped(new Point3D(6.7, 20.8 + 11.75/2, 2.5), 7.77, 11.75, 5);
+      GeometryModel3D kucaModel = new GeometryModel3D(kuca, teretanaMaterial);
+      myModel3DGroup.Children.Add(kucaModel);
+
+      //MeshGeometry3D myCubeMesh3D = CreateCube(new Point3D(5, 5, 5), 10.0);
+      //var myCubeMaterial = new DiffuseMaterial(new SolidColorBrush(Color.FromRgb(255, 250, 245)));
+      //GeometryModel3D myCube = new GeometryModel3D(myCubeMesh3D, myCubeMaterial);
+      //myModel3DGroup.Children.Add(myCube);
 
       MeshGeometry3D myPlot1Mesh3D = CreateParallelepiped(new Point3D(10, 50, 0.2), 10.0, 20.0, 0.5);
       var myPlot1Material = new DiffuseMaterial(new SolidColorBrush(Colors.Brown));
@@ -110,9 +124,9 @@ namespace GardenAce.App
       // Create a collection of vertex positions for the MeshGeometry3D.
       Point3DCollection myPositionCollection = new Point3DCollection();
       myPositionCollection.Add(new Point3D(0, 0, 0));
-      myPositionCollection.Add(new Point3D(30, 0, 0));
-      myPositionCollection.Add(new Point3D(30, 200, 0));
-      myPositionCollection.Add(new Point3D(30, 200, 0));
+      myPositionCollection.Add(new Point3D(14.41, 0, 0));
+      myPositionCollection.Add(new Point3D(14.41, 200, 0));
+      myPositionCollection.Add(new Point3D(14.41, 200, 0));
       myPositionCollection.Add(new Point3D(0, 200, 0));
       myPositionCollection.Add(new Point3D(0, 0, 0));
       myMeshGeometry3D.Positions = myPositionCollection;
