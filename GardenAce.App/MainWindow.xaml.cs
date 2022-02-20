@@ -26,7 +26,8 @@ namespace GardenAce.App
     PerspectiveCamera myPCamera = new PerspectiveCamera();
 
     Point3D _cameraPos = new Point3D(70, 40, 80);
-    Point3D _lookToPos = new Point3D(15, 20, 0);
+    Point3D _lookToPos = new Point3D(0, 0, 0);
+//    Point3D _lookToPos = new Point3D(15, 20, 0);
 
     Point3D _startCameraPosRButtonClick;
 
@@ -375,15 +376,13 @@ namespace GardenAce.App
         double diffY = e.GetPosition(this).Y - _startMouseRButtonClick.Y;
 
         // znači, moramo zarotirati točku kamere, OKO točke gledanja
-        double angleX = diffX / 3.0 * Math.PI / 180.0;
-        double angleY = diffY / 10.0 * Math.PI/180.0;
+        double angleX = diffX / 300.0 * Math.PI / 180.0;
+        double angleY = diffY / 500.0 * Math.PI/180.0;
 
-        Debug.WriteLine("Angle {0}", angleX);
+        //Point3D newPos = Calc3D.rotate_point(_lookToPos.X, _lookToPos.Y, angleX, _startCameraPosRButtonClick);
 
-        Point3D newPos = Calc3D.rotate_point(_lookToPos.X, _lookToPos.Y, angleX, _startCameraPosRButtonClick);
-
-        _cameraPos.X = newPos.X;
-        _cameraPos.Y = newPos.Y;
+        //_cameraPos.X = newPos.X;
+        //_cameraPos.Y = newPos.Y;
 
         // i sad treba zarotirati po y
         // treba oduzeti _lookAtPos, da translatiramo origin
@@ -394,8 +393,14 @@ namespace GardenAce.App
         // transformiramo u sferne koordinate
         double radius, polar, elevation;
         Calc3D.CartesianToSpherical(cam, out radius, out polar, out elevation);
-        
+
+        //Debug.WriteLine("Polar {0}  Elevation {1}", polar, elevation);
+
+
+        polar += angleX;
         elevation += angleY;
+        if (elevation < 0.0)
+          elevation = 0.05;
 
         Calc3D.SphericalToCartesian(radius, polar, elevation, out cam);
         
@@ -405,6 +410,8 @@ namespace GardenAce.App
         _cameraPos = cam;
 
         myPCamera.Position = _cameraPos;
+
+        Debug.WriteLine("{0}  Elevation - {1}", _cameraPos.ToString(), elevation);
 
         // treba ažurirati i LookDirection!!!
         myPCamera.LookDirection = Calc3D.getFrom2Points(_cameraPos, _lookToPos);
