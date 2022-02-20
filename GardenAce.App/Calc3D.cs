@@ -41,9 +41,9 @@ namespace GardenAce.App
     public static void SphericalToCartesian(double radius, double polar, double elevation, out Point3D outCart)
     {
       double a = radius * Math.Cos(elevation);
-      outCart.X = a * Math.Cos(polar);
-      outCart.Y = radius * Math.Sin(elevation);
-      outCart.Z = a * Math.Sin(polar);
+      outCart.X = radius * Math.Sin(elevation) * Math.Cos(polar);
+      outCart.Y = radius * Math.Sin(elevation) * Math.Sin(polar);
+      outCart.Z = radius * Math.Cos(elevation);
     }
 
     public static void CartesianToSpherical(Point3D cartCoords, out double outRadius, out double outPolar, out double outElevation)
@@ -53,10 +53,10 @@ namespace GardenAce.App
       outRadius = Math.Sqrt((cartCoords.X * cartCoords.X)
                       + (cartCoords.Y * cartCoords.Y)
                       + (cartCoords.Z * cartCoords.Z));
-      outPolar = Math.Atan(cartCoords.Z / cartCoords.X);
+      outPolar = Math.Atan(cartCoords.Y / cartCoords.X);
       if (cartCoords.X < 0)
         outPolar += Math.PI;
-      outElevation = Math.Asin(cartCoords.Y / outRadius);
+      outElevation = Math.Acos(cartCoords.Z / outRadius);
     }
   }
 }

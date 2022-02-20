@@ -26,8 +26,7 @@ namespace GardenAce.App
     PerspectiveCamera myPCamera = new PerspectiveCamera();
 
     Point3D _cameraPos = new Point3D(70, 40, 80);
-    Point3D _lookToPos = new Point3D(0, 0, 0);
-//    Point3D _lookToPos = new Point3D(15, 20, 0);
+    Point3D _lookToPos = new Point3D(15, 20, 0);
 
     Point3D _startCameraPosRButtonClick;
 
@@ -375,9 +374,13 @@ namespace GardenAce.App
         double diffX = e.GetPosition(this).X - _startMouseRButtonClick.X;
         double diffY = e.GetPosition(this).Y - _startMouseRButtonClick.Y;
 
+        Debug.WriteLine("Diff {0} - {1}", diffX, diffY);
+
         // znači, moramo zarotirati točku kamere, OKO točke gledanja
-        double angleX = diffX / 300.0 * Math.PI / 180.0;
-        double angleY = diffY / 500.0 * Math.PI/180.0;
+        double angleX = diffX / 5.0 * Math.PI / 180.0;
+        double angleY = diffY / 5.0 * Math.PI/180.0;
+
+        Debug.WriteLine("Angle {0} - {1}", angleX, angleY);
 
         //Point3D newPos = Calc3D.rotate_point(_lookToPos.X, _lookToPos.Y, angleX, _startCameraPosRButtonClick);
 
@@ -386,7 +389,7 @@ namespace GardenAce.App
 
         // i sad treba zarotirati po y
         // treba oduzeti _lookAtPos, da translatiramo origin
-        Point3D cam = _cameraPos;
+        Point3D cam = _startCameraPosRButtonClick;
         cam.X -= _lookToPos.X;
         cam.Y -= _lookToPos.Y;
 
@@ -394,7 +397,7 @@ namespace GardenAce.App
         double radius, polar, elevation;
         Calc3D.CartesianToSpherical(cam, out radius, out polar, out elevation);
 
-        //Debug.WriteLine("Polar {0}  Elevation {1}", polar, elevation);
+        Debug.WriteLine("Polar {0}  Elevation {1}", polar, elevation);
 
 
         polar += angleX;
