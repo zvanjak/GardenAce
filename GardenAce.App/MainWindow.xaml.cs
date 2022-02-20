@@ -94,6 +94,11 @@ namespace GardenAce.App
       GeometryModel3D myPlot1 = new GeometryModel3D(myPlot1Mesh3D, myPlot1Material);
       myModel3DGroup.Children.Add(myPlot1);
 
+      MeshGeometry3D myPlot2Mesh3D = CreateParallelepiped(new Point3D(-5.5, 69, 0.05), 14.0, 20.0, 0.1);
+      var myPlot2Material = new DiffuseMaterial(new SolidColorBrush(Colors.Brown));
+      GeometryModel3D myPlot2 = new GeometryModel3D(myPlot2Mesh3D, myPlot2Material);
+      myModel3DGroup.Children.Add(myPlot2);
+
       // Add the group of models to the ModelVisual3d.
       myModelVisual3D.Content = myModel3DGroup;
 
@@ -129,9 +134,9 @@ namespace GardenAce.App
       Point3DCollection myPositionCollection = new Point3DCollection();
       myPositionCollection.Add(new Point3D(-14, 0, 0));
       myPositionCollection.Add(new Point3D(14.41, 0, 0));
-      myPositionCollection.Add(new Point3D(14.41, 200, 0));
-      myPositionCollection.Add(new Point3D(14.41, 200, 0));
-      myPositionCollection.Add(new Point3D(-14, 200, 0));
+      myPositionCollection.Add(new Point3D(14.41, 230, 0));
+      myPositionCollection.Add(new Point3D(14.41, 230, 0));
+      myPositionCollection.Add(new Point3D(-14, 210, 0));
       myPositionCollection.Add(new Point3D(-14, 0, 0));
       myMeshGeometry3D.Positions = myPositionCollection;
 
