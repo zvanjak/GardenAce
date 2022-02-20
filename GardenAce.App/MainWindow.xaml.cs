@@ -80,12 +80,16 @@ namespace GardenAce.App
       GeometryModel3D kucaModel = new GeometryModel3D(kuca, teretanaMaterial);
       myModel3DGroup.Children.Add(kucaModel);
 
+      MeshGeometry3D konoba = CreateParallelepiped(new Point3D(-5.5, 38.0, 1.0), 5.5, 9.5, 2);
+      GeometryModel3D konobaModel = new GeometryModel3D(konoba, teretanaMaterial);
+      myModel3DGroup.Children.Add(konobaModel);
+
       //MeshGeometry3D myCubeMesh3D = CreateCube(new Point3D(5, 5, 5), 10.0);
       //var myCubeMaterial = new DiffuseMaterial(new SolidColorBrush(Color.FromRgb(255, 250, 245)));
       //GeometryModel3D myCube = new GeometryModel3D(myCubeMesh3D, myCubeMaterial);
       //myModel3DGroup.Children.Add(myCube);
 
-      MeshGeometry3D myPlot1Mesh3D = CreateParallelepiped(new Point3D(10, 50, 0.2), 10.0, 20.0, 0.5);
+      MeshGeometry3D myPlot1Mesh3D = CreateParallelepiped(new Point3D(-5.5, 46.5 + 6, 0.05), 14.0, 9.0, 0.1);
       var myPlot1Material = new DiffuseMaterial(new SolidColorBrush(Colors.Brown));
       GeometryModel3D myPlot1 = new GeometryModel3D(myPlot1Mesh3D, myPlot1Material);
       myModel3DGroup.Children.Add(myPlot1);
@@ -123,12 +127,12 @@ namespace GardenAce.App
 
       // Create a collection of vertex positions for the MeshGeometry3D.
       Point3DCollection myPositionCollection = new Point3DCollection();
-      myPositionCollection.Add(new Point3D(0, 0, 0));
+      myPositionCollection.Add(new Point3D(-14, 0, 0));
       myPositionCollection.Add(new Point3D(14.41, 0, 0));
       myPositionCollection.Add(new Point3D(14.41, 200, 0));
       myPositionCollection.Add(new Point3D(14.41, 200, 0));
-      myPositionCollection.Add(new Point3D(0, 200, 0));
-      myPositionCollection.Add(new Point3D(0, 0, 0));
+      myPositionCollection.Add(new Point3D(-14, 200, 0));
+      myPositionCollection.Add(new Point3D(-14, 0, 0));
       myMeshGeometry3D.Positions = myPositionCollection;
 
       // Create a collection of texture coordinates for the MeshGeometry3D.
@@ -159,7 +163,7 @@ namespace GardenAce.App
 
       // Create a horizontal linear gradient with four stops.
       LinearGradientBrush myHorizontalGradient = new LinearGradientBrush();
-      SolidColorBrush mySolidColorBrush1 = new SolidColorBrush(Colors.Green);
+      SolidColorBrush mySolidColorBrush1 = new SolidColorBrush(Colors.LightGreen);
       myHorizontalGradient.StartPoint = new Point(0, 0.5);
       myHorizontalGradient.EndPoint = new Point(1, 0.5);
       myHorizontalGradient.GradientStops.Add(new GradientStop(Colors.Yellow, 0.0));
