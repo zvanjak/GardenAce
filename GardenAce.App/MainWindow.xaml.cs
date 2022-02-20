@@ -374,7 +374,7 @@ namespace GardenAce.App
         double diffX = e.GetPosition(this).X - _startMouseRButtonClick.X;
 
         // znači, moramo zarotirati točku kamere, OKO točke gledanja
-        double angle = diffX*10.0 * Math.PI/180.0;
+        double angle = diffX / 3.0 * Math.PI/180.0;
 
         Debug.WriteLine("Angle {0}", angle);
 
