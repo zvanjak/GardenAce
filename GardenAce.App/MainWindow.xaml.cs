@@ -23,7 +23,6 @@ namespace GardenAce.App
   /// </summary>
   public partial class MainWindow : Window
   {
-    Ellipse myEllipse = new Ellipse();
     PerspectiveCamera myPCamera = new PerspectiveCamera();
 
     Point3D _cameraPos = new Point3D(-15, -50, 80);
@@ -84,11 +83,6 @@ namespace GardenAce.App
 
     protected override void OnRender(DrawingContext drawingContext)
     {
-      Trace.WriteLine("OnRender");
-
-      myEllipse.Height = 300;
-      drawingContext.DrawRectangle(Brushes.Red, new Pen(Brushes.Black, 5), new Rect(20, 20, 250, 250));
-
       base.OnRender(drawingContext);
     }
 
@@ -332,10 +326,6 @@ namespace GardenAce.App
       return mesh;
     }
 
-    private void Window_MouseDown(object sender, MouseButtonEventArgs e)
-    {
-    }
-
     private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
     {
       _bLButtonDown = true;
@@ -374,6 +364,8 @@ namespace GardenAce.App
     {
       _bRightButtonDown = true;
       _startMouseRButtonClick = e.GetPosition(this);
+      
+      _startCameraPosRButtonClick = _cameraPos;
     }
 
     private void Window_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
@@ -387,10 +379,6 @@ namespace GardenAce.App
       Vector3D dir = Calc3D.getFrom2Points(_cameraPos, _lookToPos);
 
       _cameraPos = _cameraPos + (e.Delta / 10.0) * dir;
-
-      //Vector3D dirLook = myPCamera.LookDirection; // = new Vector3D(0, 1, -0.5);
-      //dirLook.Z -= e.Delta / 1000.0;
-      //myPCamera.LookDirection = dirLook;
 
       myPCamera.Position = _cameraPos;
 

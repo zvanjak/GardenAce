@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GardenAce.App"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="800" Background="White" MouseDown="Window_MouseDown" MouseLeftButtonDown="Window_MouseLeftButtonDown" MouseLeftButtonUp="Window_MouseLeftButtonUp" MouseMove="Window_MouseMove" MouseRightButtonDown="Window_MouseRightButtonDown" MouseRightButtonUp="Window_MouseRightButtonUp" MouseWheel="Window_MouseWheel">
+        Title="MainWindow" Height="600" Width="800" Background="White" MouseLeftButtonDown="Window_MouseLeftButtonDown" MouseLeftButtonUp="Window_MouseLeftButtonUp" MouseMove="Window_MouseMove" MouseRightButtonDown="Window_MouseRightButtonDown" MouseRightButtonUp="Window_MouseRightButtonUp" MouseWheel="Window_MouseWheel">
     <DockPanel>
         <Viewbox>
             <!--<Canvas Width="321" Height="201">-->
