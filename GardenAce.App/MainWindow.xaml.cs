@@ -27,11 +27,13 @@ namespace GardenAce.App
     PerspectiveCamera myPCamera = new PerspectiveCamera();
 
     Point3D _cameraPos = new Point3D(-15, -50, 80);
-    Point3D _lookToPos = new Point3D(-10, 80, 0);
+    Point3D _lookToPos = new Point3D(-15, 80, 0);
 
     private bool _bLButtonDown = false;
     private bool _bRightButtonDown = false;
+
     private Point _lastMousePos;
+    private Point _startMouseRButtonClick;
 
     public MainWindow()
     {
@@ -354,11 +356,13 @@ namespace GardenAce.App
       {
         // morati ćemo uzeti u obzir i smjer gledanja na kraju!
         var newPos = e.GetPosition(this);
-        var diffX = newPos.X - _lastMousePos.X;
-        var diffY = newPos.Y - _lastMousePos.Y;
+        var diffX = (newPos.X - _lastMousePos.X) / 100.0;
+        var diffY = (newPos.Y - _lastMousePos.Y) / 100.0;
 
-        var pnt = myPCamera.Position;
-        myPCamera.Position = new Point3D(pnt.X + diffX/100.0f, pnt.Y - diffY/100.0, pnt.Z);
+        _cameraPos = new Point3D(_cameraPos.X + diffX, _cameraPos.Y - diffY, _cameraPos.Z);
+        _lookToPos = new Point3D(_lookToPos.X + diffX, _lookToPos.Y - diffY, _lookToPos.Z);
+
+        myPCamera.Position = _cameraPos;
 
         myViewport3D.InvalidateVisual();
       }
@@ -372,6 +376,7 @@ namespace GardenAce.App
     private void Window_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
     {
       _bRightButtonDown = true;
+      _startMouseRButtonClick = e.GetPosition(this);
     }
 
     private void Window_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
