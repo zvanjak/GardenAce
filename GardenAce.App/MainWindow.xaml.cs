@@ -337,6 +337,19 @@ namespace GardenAce.App
       _bLButtonDown = false;
     }
 
+    private void Window_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+    {
+      _bRightButtonDown = true;
+      _startMouseRButtonClick = e.GetPosition(this);
+
+      _startCameraPosRButtonClick = _cameraPos;
+    }
+
+    private void Window_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
+    {
+      _bRightButtonDown = false;
+    }
+
     private void Window_MouseMove(object sender, MouseEventArgs e)
     {
       if( _bLButtonDown )
@@ -356,21 +369,16 @@ namespace GardenAce.App
 
       if( _bRightButtonDown )
       {
+        // za početak, samo ćemo se micati lijevo desno
 
+        // znači, moramo zarotirati točku kamere, OKO točke gledanja
+        Point axisOrigin = new Point(_lookToPos.X, _lookToPos.Y);
+        Point camera = new Point(_cameraPos.X, _cameraPos.Y);
+        double angle = 15.0 * Math.PI/180.0;
+        Point3D newPos = Calc3D.rotate_point(_cameraPos.X, _cameraPos.Y, angle, _lookToPos);
+
+        // Z ostaje isti
       }
-    }
-
-    private void Window_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
-    {
-      _bRightButtonDown = true;
-      _startMouseRButtonClick = e.GetPosition(this);
-      
-      _startCameraPosRButtonClick = _cameraPos;
-    }
-
-    private void Window_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
-    {
-      _bRightButtonDown = false;
     }
 
     private void Window_MouseWheel(object sender, MouseWheelEventArgs e)
