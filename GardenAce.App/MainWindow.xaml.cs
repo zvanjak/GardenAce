@@ -25,8 +25,8 @@ namespace GardenAce.App
   {
     PerspectiveCamera myPCamera = new PerspectiveCamera();
 
-    Point3D _cameraPos = new Point3D(-15, -50, 80);
-    Point3D _lookToPos = new Point3D(-15, 80, 0);
+    Point3D _cameraPos = new Point3D(45, 20, 80);
+    Point3D _lookToPos = new Point3D(15, 20, 0);
 
     Point3D _startCameraPosRButtonClick;
 
@@ -48,8 +48,9 @@ namespace GardenAce.App
       // Defines the camera used to view the 3D object. In order to view the 3D object,
       // the camera must be positioned and pointed such that the object is within view
       // of the camera.
-      myPCamera.Position = new Point3D(-15, -50, 80);
+      myPCamera.Position = _cameraPos;
       myPCamera.LookDirection = Calc3D.getFrom2Points(_cameraPos, _lookToPos);
+      myPCamera.UpDirection = new Vector3D(0, 0, 1);
       myPCamera.FieldOfView = 60;
       myViewport3D.Camera = myPCamera;
 
@@ -373,7 +374,7 @@ namespace GardenAce.App
         double diffX = e.GetPosition(this).X - _startMouseRButtonClick.X;
 
         // znači, moramo zarotirati točku kamere, OKO točke gledanja
-        double angle = diffX/10.0 * Math.PI/180.0;
+        double angle = diffX*10.0 * Math.PI/180.0;
 
         Debug.WriteLine("Angle {0}", angle);
 
@@ -399,6 +400,26 @@ namespace GardenAce.App
       _cameraPos = _cameraPos + (e.Delta / 10.0) * dir;
 
       myPCamera.Position = _cameraPos;
+
+      myViewport3D.InvalidateVisual();
+    }
+
+    private void Window_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+    {
+      // idemo zarotirati za kut od 45 stupnjeva
+      double angle = 45 * Math.PI / 180.0;
+
+      Debug.WriteLine("Angle {0}", angle);
+
+      Point3D newPos = Calc3D.rotate_point(_lookToPos.X, _lookToPos.Y, angle, _startCameraPosRButtonClick);
+
+      _cameraPos.X = newPos.X;
+      _cameraPos.Y = newPos.Y;
+
+      myPCamera.Position = _cameraPos;
+
+      // treba ažurirati i LookDirection!!!
+      myPCamera.LookDirection = Calc3D.getFrom2Points(_cameraPos, _lookToPos);
 
       myViewport3D.InvalidateVisual();
     }
