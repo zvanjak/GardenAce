@@ -29,6 +29,8 @@ namespace GardenAce.App
     Point3D _cameraPos = new Point3D(-15, -50, 80);
     Point3D _lookToPos = new Point3D(-15, 80, 0);
 
+    Point3D _startCameraPosRButtonClick;
+
     private bool _bLButtonDown = false;
     private bool _bRightButtonDown = false;
 
@@ -47,20 +49,10 @@ namespace GardenAce.App
       // Defines the camera used to view the 3D object. In order to view the 3D object,
       // the camera must be positioned and pointed such that the object is within view
       // of the camera.
-
-      // Specify where in the 3D scene the camera is.
       myPCamera.Position = new Point3D(-15, -50, 80);
-
-      // Specify the direction that the camera is pointing.
-      //myPCamera.LookDirection = new Vector3D(0, 1, -0.75);
       myPCamera.LookDirection = Calc3D.getFrom2Points(_cameraPos, _lookToPos);
-
-      // Define camera's horizontal field of view in degrees.
       myPCamera.FieldOfView = 60;
-
-      // Asign the camera to the viewport
       myViewport3D.Camera = myPCamera;
-
 
       // Define the lights cast in the scene. Without light, the 3D object cannot
       // be seen. Note: to illuminate an object from additional directions, create
@@ -68,9 +60,43 @@ namespace GardenAce.App
       DirectionalLight myDirectionalLight = new DirectionalLight();
       myDirectionalLight.Color = Colors.White;
       myDirectionalLight.Direction = new Vector3D(-0.61, -0.5, -0.61);
-
       myModel3DGroup.Children.Add(myDirectionalLight);
 
+
+      myGeometryModel = CreateInitial();
+      myModel3DGroup.Children.Add(myGeometryModel);
+
+      MeshGeometry3D myCubeMesh3D = CreateCube(new Point3D(17, 20, 5), 10.0);
+      var myCubeMaterial = new DiffuseMaterial(new SolidColorBrush(Color.FromRgb(255, 250, 245)));
+      GeometryModel3D myCube = new GeometryModel3D(myCubeMesh3D, myCubeMaterial);
+      myModel3DGroup.Children.Add(myCube);
+
+      MeshGeometry3D myPlot1Mesh3D = CreateParallelepiped(new Point3D(10, 50, 0.2), 10.0, 20.0, 0.5);
+      var myPlot1Material = new DiffuseMaterial(new SolidColorBrush(Colors.Brown));
+      GeometryModel3D myPlot1 = new GeometryModel3D(myPlot1Mesh3D, myPlot1Material);
+      myModel3DGroup.Children.Add(myPlot1);
+
+      // Add the group of models to the ModelVisual3d.
+      myModelVisual3D.Content = myModel3DGroup;
+
+      myViewport3D.Children.Add(myModelVisual3D);
+    }
+
+    protected override void OnRender(DrawingContext drawingContext)
+    {
+      Trace.WriteLine("OnRender");
+
+      myEllipse.Height = 300;
+      drawingContext.DrawRectangle(Brushes.Red, new Pen(Brushes.Black, 5), new Rect(20, 20, 250, 250));
+
+      base.OnRender(drawingContext);
+    }
+
+    public static GeometryModel3D CreateInitial()
+    {
+      Model3DGroup myModel3DGroup = new Model3DGroup();
+      GeometryModel3D myGeometryModel = new GeometryModel3D();
+      ModelVisual3D myModelVisual3D = new ModelVisual3D();
 
       // The geometry specifes the shape of the 3D plane. In this sample, a flat sheet
       // is created.
@@ -146,36 +172,7 @@ namespace GardenAce.App
       //myRotateTransform3D.Rotation = myAxisAngleRotation3d;
       //myGeometryModel.Transform = myRotateTransform3D;
 
-      // Add the geometry model to the model group.
-      myModel3DGroup.Children.Add(myGeometryModel);
-
-      MeshGeometry3D myCubeMesh3D = CreateCube(new Point3D(17, 20, 5), 10.0);
-      var myCubeMaterial = new DiffuseMaterial(new SolidColorBrush(Color.FromRgb(255, 250, 245)));
-      GeometryModel3D myCube = new GeometryModel3D(myCubeMesh3D, myCubeMaterial);
-
-      myModel3DGroup.Children.Add(myCube);
-
-      MeshGeometry3D myPlot1Mesh3D = CreateParallelepiped(new Point3D(10, 50, 0.2), 10.0, 20.0, 0.5);
-      var myPlot1Material = new DiffuseMaterial(new SolidColorBrush(Colors.Brown));
-      GeometryModel3D myPlot1 = new GeometryModel3D(myPlot1Mesh3D, myPlot1Material);
-
-      myModel3DGroup.Children.Add(myPlot1);
-
-      // Add the group of models to the ModelVisual3d.
-      myModelVisual3D.Content = myModel3DGroup;
-
-      //
-      myViewport3D.Children.Add(myModelVisual3D);
-    }
-
-    protected override void OnRender(DrawingContext drawingContext)
-    {
-      Trace.WriteLine("OnRender");
-
-      myEllipse.Height = 300;
-      drawingContext.DrawRectangle(Brushes.Red, new Pen(Brushes.Black, 5), new Rect(20, 20, 250, 250));
-
-      base.OnRender(drawingContext);
+      return myGeometryModel;
     }
     public static MeshGeometry3D CreateCube(Point3D inCenter, double length)
     {
