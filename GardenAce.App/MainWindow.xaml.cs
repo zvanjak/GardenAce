@@ -47,7 +47,7 @@ namespace GardenAce.App
       myPCamera.Position = new Point3D(-15, -50, 80);
 
       // Specify the direction that the camera is pointing.
-      myPCamera.LookDirection = new Vector3D(0, 1, -1);
+      myPCamera.LookDirection = new Vector3D(0, 1, -0.5);
 
       // Define camera's horizontal field of view in degrees.
       myPCamera.FieldOfView = 60;
@@ -143,12 +143,17 @@ namespace GardenAce.App
       // Add the geometry model to the model group.
       myModel3DGroup.Children.Add(myGeometryModel);
 
-
       MeshGeometry3D myCubeMesh3D = CreateCube(new Point3D(17, 20, 5), 10.0);
       var myCubeMaterial = new DiffuseMaterial(new SolidColorBrush(Color.FromRgb(255, 250, 245)));
       GeometryModel3D myCube = new GeometryModel3D(myCubeMesh3D, myCubeMaterial);
 
       myModel3DGroup.Children.Add(myCube);
+
+      MeshGeometry3D myPlot1Mesh3D = CreateParallelepiped(new Point3D(10, 50, 0.2), 10.0, 20.0, 0.5);
+      var myPlot1Material = new DiffuseMaterial(new SolidColorBrush(Colors.Brown));
+      GeometryModel3D myPlot1 = new GeometryModel3D(myPlot1Mesh3D, myPlot1Material);
+
+      myModel3DGroup.Children.Add(myPlot1);
 
       // Add the group of models to the ModelVisual3d.
       myModelVisual3D.Content = myModel3DGroup;
@@ -178,6 +183,85 @@ namespace GardenAce.App
       Point3D p6 = new Point3D(inCenter.X + length / 2, inCenter.Y - length / 2, inCenter.Z + length / 2);
       Point3D p7 = new Point3D(inCenter.X + length / 2, inCenter.Y - length / 2, inCenter.Z - length / 2);
       Point3D p8 = new Point3D(inCenter.X - length / 2, inCenter.Y - length / 2, inCenter.Z - length / 2);
+
+      mesh.Positions.Add(p1);
+      mesh.Positions.Add(p2);
+      mesh.Positions.Add(p3);
+      mesh.Positions.Add(p4);
+      mesh.Positions.Add(p5);
+      mesh.Positions.Add(p6);
+      mesh.Positions.Add(p7);
+      mesh.Positions.Add(p8);
+
+      // gornja ploha
+      mesh.TriangleIndices.Add(0);
+      mesh.TriangleIndices.Add(1);
+      mesh.TriangleIndices.Add(2);
+
+      mesh.TriangleIndices.Add(0);
+      mesh.TriangleIndices.Add(2);
+      mesh.TriangleIndices.Add(3);
+
+      // donja ploha
+      mesh.TriangleIndices.Add(4);
+      mesh.TriangleIndices.Add(6);
+      mesh.TriangleIndices.Add(5);
+
+      mesh.TriangleIndices.Add(4);
+      mesh.TriangleIndices.Add(7);
+      mesh.TriangleIndices.Add(6);
+
+      // srednja 1 ploha
+      mesh.TriangleIndices.Add(0);
+      mesh.TriangleIndices.Add(5);
+      mesh.TriangleIndices.Add(1);
+
+      mesh.TriangleIndices.Add(0);
+      mesh.TriangleIndices.Add(4);
+      mesh.TriangleIndices.Add(5);
+
+      // srednja 2 ploha
+      mesh.TriangleIndices.Add(1);
+      mesh.TriangleIndices.Add(5);
+      mesh.TriangleIndices.Add(6);
+
+      mesh.TriangleIndices.Add(1);
+      mesh.TriangleIndices.Add(6);
+      mesh.TriangleIndices.Add(2);
+
+      // srednja 3 ploha
+      mesh.TriangleIndices.Add(2);
+      mesh.TriangleIndices.Add(6);
+      mesh.TriangleIndices.Add(7);
+
+      mesh.TriangleIndices.Add(2);
+      mesh.TriangleIndices.Add(7);
+      mesh.TriangleIndices.Add(3);
+
+      // srednja 4 ploha
+      mesh.TriangleIndices.Add(3);
+      mesh.TriangleIndices.Add(7);
+      mesh.TriangleIndices.Add(4);
+
+      mesh.TriangleIndices.Add(3);
+      mesh.TriangleIndices.Add(4);
+      mesh.TriangleIndices.Add(0);
+
+      return mesh;
+    }
+
+    public static MeshGeometry3D CreateParallelepiped(Point3D inCenter, double lengthX, double lengthY, double lengthZ)
+    {
+      MeshGeometry3D mesh = new MeshGeometry3D();
+
+      Point3D p1 = new Point3D(inCenter.X - lengthX / 2, inCenter.Y + lengthY / 2, inCenter.Z + lengthZ / 2);
+      Point3D p2 = new Point3D(inCenter.X + lengthX / 2, inCenter.Y + lengthY / 2, inCenter.Z + lengthZ / 2);
+      Point3D p3 = new Point3D(inCenter.X + lengthX / 2, inCenter.Y + lengthY / 2, inCenter.Z - lengthZ / 2);
+      Point3D p4 = new Point3D(inCenter.X - lengthX / 2, inCenter.Y + lengthY / 2, inCenter.Z - lengthZ / 2);
+      Point3D p5 = new Point3D(inCenter.X - lengthX / 2, inCenter.Y - lengthY / 2, inCenter.Z + lengthZ / 2);
+      Point3D p6 = new Point3D(inCenter.X + lengthX / 2, inCenter.Y - lengthY / 2, inCenter.Z + lengthZ / 2);
+      Point3D p7 = new Point3D(inCenter.X + lengthX / 2, inCenter.Y - lengthY / 2, inCenter.Z - lengthZ / 2);
+      Point3D p8 = new Point3D(inCenter.X - lengthX / 2, inCenter.Y - lengthY / 2, inCenter.Z - lengthZ / 2);
 
       mesh.Positions.Add(p1);
       mesh.Positions.Add(p2);
@@ -288,6 +372,17 @@ namespace GardenAce.App
     private void Window_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
     {
       _bRightButtonDown = false;
+    }
+
+    private void Window_MouseWheel(object sender, MouseWheelEventArgs e)
+    {
+
+      Vector3D dir = myPCamera.LookDirection; // = new Vector3D(0, 1, -0.5);
+
+      dir.Z -= e.Delta / 1000.0;
+      myPCamera.LookDirection = dir;
+      
+      myViewport3D.InvalidateVisual();
     }
   }
 }
