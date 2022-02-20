@@ -49,11 +49,9 @@ namespace GardenAce.App
       // Specify where in the 3D scene the camera is.
       myPCamera.Position = new Point3D(-15, -50, 80);
 
-      Vector3D dir = Calc3D.getFrom2Points(_cameraPos, _lookToPos);
-
       // Specify the direction that the camera is pointing.
       //myPCamera.LookDirection = new Vector3D(0, 1, -0.75);
-      myPCamera.LookDirection = dir;
+      myPCamera.LookDirection = Calc3D.getFrom2Points(_cameraPos, _lookToPos);
 
       // Define camera's horizontal field of view in degrees.
       myPCamera.FieldOfView = 60;
@@ -354,6 +352,7 @@ namespace GardenAce.App
     {
       if( _bLButtonDown )
       {
+        // morati ćemo uzeti u obzir i smjer gledanja na kraju!
         var newPos = e.GetPosition(this);
         var diffX = newPos.X - _lastMousePos.X;
         var diffY = newPos.Y - _lastMousePos.Y;
@@ -382,12 +381,17 @@ namespace GardenAce.App
 
     private void Window_MouseWheel(object sender, MouseWheelEventArgs e)
     {
+      // mijenjamo poziciju kamere da se ili približi ili udalji od točke u koju gledamo
+      Vector3D dir = Calc3D.getFrom2Points(_cameraPos, _lookToPos);
 
-      Vector3D dir = myPCamera.LookDirection; // = new Vector3D(0, 1, -0.5);
+      _cameraPos = _cameraPos + (e.Delta / 10.0) * dir;
 
-      dir.Z -= e.Delta / 1000.0;
-      myPCamera.LookDirection = dir;
-      
+      //Vector3D dirLook = myPCamera.LookDirection; // = new Vector3D(0, 1, -0.5);
+      //dirLook.Z -= e.Delta / 1000.0;
+      //myPCamera.LookDirection = dirLook;
+
+      myPCamera.Position = _cameraPos;
+
       myViewport3D.InvalidateVisual();
     }
   }
