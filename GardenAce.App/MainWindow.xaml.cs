@@ -26,6 +26,9 @@ namespace GardenAce.App
     Ellipse myEllipse = new Ellipse();
     PerspectiveCamera myPCamera = new PerspectiveCamera();
 
+    Point3D _cameraPos = new Point3D(-15, -50, 80);
+    Point3D _lookToPos = new Point3D(-10, 80, 0);
+
     private bool _bLButtonDown = false;
     private bool _bRightButtonDown = false;
     private Point _lastMousePos;
@@ -46,8 +49,11 @@ namespace GardenAce.App
       // Specify where in the 3D scene the camera is.
       myPCamera.Position = new Point3D(-15, -50, 80);
 
+      Vector3D dir = Calc3D.getFrom2Points(_cameraPos, _lookToPos);
+
       // Specify the direction that the camera is pointing.
-      myPCamera.LookDirection = new Vector3D(0, 1, -0.5);
+      //myPCamera.LookDirection = new Vector3D(0, 1, -0.75);
+      myPCamera.LookDirection = dir;
 
       // Define camera's horizontal field of view in degrees.
       myPCamera.FieldOfView = 60;
