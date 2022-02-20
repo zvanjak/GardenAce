@@ -16,6 +16,16 @@ using System.Windows.Shapes;
 using System.Windows.Media;
 using System.Windows.Media.Media3D;
 
+/* IDEJE
+ * - polazna točka je geometrijska izmjera s Google maps - uneseš poligon koordinata koji definira Estate
+ *    - može biti i više parcela
+ * - definiraš ishodišnu točku na tom modelu (origin)
+ * - i onda se sve koordinate zadaju relativno 
+ * 
+ * KRENUTI S FILE BASED, ALI ODMAH S REPOZITORIJEM
+ * 
+ * */
+
 namespace GardenAce.App
 {
   /// <summary>
