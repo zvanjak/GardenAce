@@ -370,14 +370,24 @@ namespace GardenAce.App
       if( _bRightButtonDown )
       {
         // za početak, samo ćemo se micati lijevo desno
+        double diffX = e.GetPosition(this).X - _startMouseRButtonClick.X;
 
         // znači, moramo zarotirati točku kamere, OKO točke gledanja
-        Point axisOrigin = new Point(_lookToPos.X, _lookToPos.Y);
-        Point camera = new Point(_cameraPos.X, _cameraPos.Y);
-        double angle = 15.0 * Math.PI/180.0;
-        Point3D newPos = Calc3D.rotate_point(_cameraPos.X, _cameraPos.Y, angle, _lookToPos);
+        double angle = diffX/10.0 * Math.PI/180.0;
 
-        // Z ostaje isti
+        Debug.WriteLine("Angle {0}", angle);
+
+        Point3D newPos = Calc3D.rotate_point(_lookToPos.X, _lookToPos.Y, angle, _startCameraPosRButtonClick);
+
+        _cameraPos.X = newPos.X;
+        _cameraPos.Y = newPos.Y;
+
+        myPCamera.Position = _cameraPos;
+
+        // treba ažurirati i LookDirection!!!
+        myPCamera.LookDirection = Calc3D.getFrom2Points(_cameraPos, _lookToPos);
+
+        myViewport3D.InvalidateVisual();
       }
     }
 
