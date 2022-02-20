@@ -38,25 +38,25 @@ namespace GardenAce.App
       return p;
     }
 
-    public static void SphericalToCartesian(float radius, float polar, float elevation, out Vector3 outCart)
+    public static void SphericalToCartesian(double radius, double polar, double elevation, out Point3D outCart)
     {
-      float a = radius * Mathf.Cos(elevation);
-      outCart.x = a * Mathf.Cos(polar);
-      outCart.y = radius * Mathf.Sin(elevation);
-      outCart.z = a * Mathf.Sin(polar);
+      double a = radius * Math.Cos(elevation);
+      outCart.X = a * Math.Cos(polar);
+      outCart.Y = radius * Math.Sin(elevation);
+      outCart.Z = a * Math.Sin(polar);
     }
 
-
-    public static void CartesianToSpherical(Vector3 cartCoords, out float outRadius, out float outPolar, out float outElevation)
+    public static void CartesianToSpherical(Point3D cartCoords, out double outRadius, out double outPolar, out double outElevation)
     {
-      if (cartCoords.x == 0)
-        cartCoords.x = Mathf.Epsilon;
-      outRadius = Mathf.Sqrt((cartCoords.x * cartCoords.x)
-                      + (cartCoords.y * cartCoords.y)
-                      + (cartCoords.z * cartCoords.z));
-      outPolar = Mathf.Atan(cartCoords.z / cartCoords.x);
-      if (cartCoords.x < 0)
-        outPolar += Mathf.PI;
-      outE
-      }
+      if (cartCoords.X == 0)
+        cartCoords.X = 1e-10;
+      outRadius = Math.Sqrt((cartCoords.X * cartCoords.X)
+                      + (cartCoords.Y * cartCoords.Y)
+                      + (cartCoords.Z * cartCoords.Z));
+      outPolar = Math.Atan(cartCoords.Z / cartCoords.X);
+      if (cartCoords.X < 0)
+        outPolar += Math.PI;
+      outElevation = Math.Asin(cartCoords.Y / outRadius);
+    }
+  }
 }

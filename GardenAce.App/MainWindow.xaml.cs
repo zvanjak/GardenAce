@@ -25,7 +25,7 @@ namespace GardenAce.App
   {
     PerspectiveCamera myPCamera = new PerspectiveCamera();
 
-    Point3D _cameraPos = new Point3D(45, 20, 80);
+    Point3D _cameraPos = new Point3D(70, 40, 80);
     Point3D _lookToPos = new Point3D(15, 20, 0);
 
     Point3D _startCameraPosRButtonClick;
@@ -372,16 +372,37 @@ namespace GardenAce.App
       {
         // za početak, samo ćemo se micati lijevo desno
         double diffX = e.GetPosition(this).X - _startMouseRButtonClick.X;
+        double diffY = e.GetPosition(this).Y - _startMouseRButtonClick.Y;
 
         // znači, moramo zarotirati točku kamere, OKO točke gledanja
-        double angle = diffX / 3.0 * Math.PI/180.0;
+        double angleX = diffX / 3.0 * Math.PI / 180.0;
+        double angleY = diffY / 10.0 * Math.PI/180.0;
 
-        Debug.WriteLine("Angle {0}", angle);
+        Debug.WriteLine("Angle {0}", angleX);
 
-        Point3D newPos = Calc3D.rotate_point(_lookToPos.X, _lookToPos.Y, angle, _startCameraPosRButtonClick);
+        Point3D newPos = Calc3D.rotate_point(_lookToPos.X, _lookToPos.Y, angleX, _startCameraPosRButtonClick);
 
         _cameraPos.X = newPos.X;
         _cameraPos.Y = newPos.Y;
+
+        // i sad treba zarotirati po y
+        // treba oduzeti _lookAtPos, da translatiramo origin
+        Point3D cam = _cameraPos;
+        cam.X -= _lookToPos.X;
+        cam.Y -= _lookToPos.Y;
+
+        // transformiramo u sferne koordinate
+        double radius, polar, elevation;
+        Calc3D.CartesianToSpherical(cam, out radius, out polar, out elevation);
+        
+        elevation += angleY;
+
+        Calc3D.SphericalToCartesian(radius, polar, elevation, out cam);
+        
+        cam.X += _lookToPos.X;
+        cam.Y += _lookToPos.Y;
+
+        _cameraPos = cam;
 
         myPCamera.Position = _cameraPos;
 
@@ -407,21 +428,21 @@ namespace GardenAce.App
     private void Window_MouseDoubleClick(object sender, MouseButtonEventArgs e)
     {
       // idemo zarotirati za kut od 45 stupnjeva
-      double angle = 45 * Math.PI / 180.0;
+      //double angle = 45 * Math.PI / 180.0;
 
-      Debug.WriteLine("Angle {0}", angle);
+      //Debug.WriteLine("Angle {0}", angle);
 
-      Point3D newPos = Calc3D.rotate_point(_lookToPos.X, _lookToPos.Y, angle, _startCameraPosRButtonClick);
+      //Point3D newPos = Calc3D.rotate_point(_lookToPos.X, _lookToPos.Y, angle, _startCameraPosRButtonClick);
 
-      _cameraPos.X = newPos.X;
-      _cameraPos.Y = newPos.Y;
+      //_cameraPos.X = newPos.X;
+      //_cameraPos.Y = newPos.Y;
 
-      myPCamera.Position = _cameraPos;
+      //myPCamera.Position = _cameraPos;
 
-      // treba ažurirati i LookDirection!!!
-      myPCamera.LookDirection = Calc3D.getFrom2Points(_cameraPos, _lookToPos);
+      //// treba ažurirati i LookDirection!!!
+      //myPCamera.LookDirection = Calc3D.getFrom2Points(_cameraPos, _lookToPos);
 
-      myViewport3D.InvalidateVisual();
+      //myViewport3D.InvalidateVisual();
     }
   }
 }
