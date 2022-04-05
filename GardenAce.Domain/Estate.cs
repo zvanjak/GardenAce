@@ -2,7 +2,7 @@
 
 namespace GardenAce.Domain
 {
-    public class Class1
+    public class Estate
     {
     }
 }
