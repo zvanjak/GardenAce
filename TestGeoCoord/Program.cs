@@ -27,18 +27,18 @@ namespace TestGeoCoord
       double lat2 = x2;
       double lon2 = y2;
 
-      const double R = 6371e3; // metres
-      const double phi1 = lat1 * Math.PI / 180; // φ, λ in radians
-      const double phi2 = lat2 * Math.PI / 180;
-      const double deltaPhi = (lat2 - lat1) * Math.PI / 180;
-      const double deltaLat = (lon2 - lon1) * Math.PI / 180;
+      double R = 6371e3; // metres
+      double phi1 = lat1 * Math.PI / 180; // φ, λ in radians
+      double phi2 = lat2 * Math.PI / 180;
+      double deltaPhi = (lat2 - lat1) * Math.PI / 180;
+      double deltaLat = (lon2 - lon1) * Math.PI / 180;
 
-      const a = Math.sin(Δφ / 2) * Math.sin(Δφ / 2) +
-                Math.cos(φ1) * Math.cos(φ2) *
-                Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
-      const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+      double a = Math.Sin(deltaPhi / 2) * Math.Sin(deltaPhi / 2) +
+                Math.Cos(phi1) * Math.Cos(phi2) *
+                Math.Sin(deltaLat / 2) * Math.Sin(deltaLat / 2);
+      double c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
 
-      const d = R * c; // in metres
+      double d = R * c; // in metres
     }
   }
 }
