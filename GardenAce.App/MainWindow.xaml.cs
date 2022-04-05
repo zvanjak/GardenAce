@@ -52,7 +52,6 @@ namespace GardenAce.App
 
       // Declare scene objects.
       Model3DGroup myModel3DGroup = new Model3DGroup();
-      GeometryModel3D myGeometryModel = new GeometryModel3D();
       ModelVisual3D myModelVisual3D = new ModelVisual3D();
 
       // Defines the camera used to view the 3D object. In order to view the 3D object,
@@ -72,8 +71,7 @@ namespace GardenAce.App
       myDirectionalLight.Direction = new Vector3D(-0.61, -0.5, -0.61);
       myModel3DGroup.Children.Add(myDirectionalLight);
 
-
-      myGeometryModel = CreateInitial();
+      GeometryModel3D myGeometryModel = CreateInitial();
       myModel3DGroup.Children.Add(myGeometryModel);
 
       MeshGeometry3D podloga = CreateParallelepiped(new Point3D(0, 100, -0.1), 100.0, 300.0, 0.01);
