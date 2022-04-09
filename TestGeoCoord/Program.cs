@@ -10,6 +10,7 @@ namespace TestGeoCoord
   {
     static void Main(string[] args)
     {
+      
       double x1 = 45.73779885083265;
       double y1 = 15.936093764979713;
 
@@ -22,10 +23,10 @@ namespace TestGeoCoord
       double x4 = 45.735962290389196;
       double y4 = 15.935010881339498;
 
-      double lat1 = x1;
-      double lon1 = y1;
-      double lat2 = x2;
-      double lon2 = y2;
+      double lat1 = x2;
+      double lon1 = y2;
+      double lat2 = x3;
+      double lon2 = y3;
 
       double R = 6371e3; // metres
       double phi1 = lat1 * Math.PI / 180; // φ, λ in radians

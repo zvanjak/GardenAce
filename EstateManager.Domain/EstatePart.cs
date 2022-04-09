@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GardenAce.Domain
+namespace EstateManager.Domain
 {
-  public class GeoCoord
+  internal class EstatePart
   {
+    // osnovno - zauzima dio tlocrta od estate!
   }
 }

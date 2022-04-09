@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GardenAce.Domain
+namespace EstateManager.Domain
 {
   public class GeoCoord
   {
+    public double Latitude { get; set; }
+    public double Longitude { get; set; }
   }
 }

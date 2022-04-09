@@ -9,5 +9,6 @@ namespace GardenAce.Domain
   public class EstateLegalGeoDefinition
   {
     // ima Geo Polyline za definiciju granice
+    public List<GeoCoord> _borderPoints = new List<GeoCoord>();
   }
 }
