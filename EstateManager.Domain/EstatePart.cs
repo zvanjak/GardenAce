@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EstateManager.Domain
 {
-  internal class EstatePart
+  public class EstatePart
   {
     // osnovno - zauzima dio tlocrta od estate!
   }
