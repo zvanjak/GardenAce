@@ -8,13 +8,14 @@ namespace EstateManager.Domain
 {
   public class Estate
   {
-    public EstateLegalGeoDefinition LegalGeoDefinition { get; set; }
+    string _name;   // Dupci, Sukošan, Silba
+    public EstateGeoDefinition LegalGeoDefinition { get; set; }
 
     public List<EstatePart> _estateParts = new List<EstatePart>();
 
     public Estate()
     {
-      LegalGeoDefinition = new EstateLegalGeoDefinition();
+      LegalGeoDefinition = new EstateGeoDefinition();
 
       LegalGeoDefinition.BorderPoints.Add(new GeoCoord() { Latitude = 45.73779885083265, Longitude = 15.936093764979713 });
       LegalGeoDefinition.BorderPoints.Add(new GeoCoord() { Latitude = 45.73775302153398, Longitude = 15.93626284812708 });

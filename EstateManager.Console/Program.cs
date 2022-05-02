@@ -9,7 +9,7 @@ namespace EstateManager.ConsoleApp
   {
     static void Main(string[] args)
     {
-      EstateLegalGeoDefinition def = new EstateLegalGeoDefinition();
+      EstateGeoDefinition def = new EstateGeoDefinition();
 
       GeoCoord origin = def.BorderPoints[1];
 

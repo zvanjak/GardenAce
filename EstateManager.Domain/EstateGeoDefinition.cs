@@ -14,7 +14,7 @@ namespace EstateManager.Domain
 
   // trebati će mi lokalna transformacija!
 
-  public class EstateLegalGeoDefinition
+  public class EstateGeoDefinition
   {
     // ima Geo Polyline za definiciju granice
     private List<GeoCoord> borderPoints = new List<GeoCoord>();
@@ -27,7 +27,7 @@ namespace EstateManager.Domain
 
     public List<GeoCoord> BorderPoints { get => borderPoints; set => borderPoints = value; }
 
-    public EstateLegalGeoDefinition()
+    public EstateGeoDefinition()
     {
     }
 
