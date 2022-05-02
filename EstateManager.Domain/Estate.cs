@@ -9,12 +9,13 @@ namespace EstateManager.Domain
   public class Estate
   {
     string _name;   // Dupci, Sukošan, Silba
-    public EstateGeoDefinition LegalGeoDefinition { get; set; }
+    public EstateGeoDefinition _geoDefinition { get; set; }
 
     public List<EstatePart> _estateParts = new List<EstatePart>();
 
-    public Estate()
+    public Estate(EstateGeoDefinition inGeoDef)
     {
+      _geoDefinition = inGeoDef;
       // svi su u DonjiVrt
       // dodati garden plot za krumpire, kapulu, salatu i jagode
     }
