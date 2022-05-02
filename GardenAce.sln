@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GardenAce.App", "GardenAce.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EstateManager.Domain", "EstateManager.Domain\EstateManager.Domain.csproj", "{41975090-CEE5-4D12-922C-551E159D7B6C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EstateManager.Console", "EstateManager.Console\EstateManager.Console.csproj", "{072E8C4A-3E13-4F66-9F28-4B62EC48B2E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EstateManager.Console", "EstateManager.Console\EstateManager.Console.csproj", "{072E8C4A-3E13-4F66-9F28-4B62EC48B2E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EstateManager.MainApp", "EstateManager.MainApp\EstateManager.MainApp.csproj", "{06BDFADF-A77D-4853-BCEF-66A33360C07C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EstateManager.MainApp", "EstateManager.MainApp\EstateManager.MainApp.csproj", "{06BDFADF-A77D-4853-BCEF-66A33360C07C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MathLibCSharp", "..\MathLibCSharp\MathLibCSharp\MathLibCSharp.csproj", "{5FBD731C-5E60-4454-8171-B21D62E4DB12}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{06BDFADF-A77D-4853-BCEF-66A33360C07C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{06BDFADF-A77D-4853-BCEF-66A33360C07C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{06BDFADF-A77D-4853-BCEF-66A33360C07C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FBD731C-5E60-4454-8171-B21D62E4DB12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FBD731C-5E60-4454-8171-B21D62E4DB12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FBD731C-5E60-4454-8171-B21D62E4DB12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FBD731C-5E60-4454-8171-B21D62E4DB12}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
