@@ -19,6 +19,8 @@ namespace EstateManager.ConsoleApp
       geoDefinition._localOrigin = geoDefinition.BorderPoints[1];
       geoDefinition._localRotation = 19.9055 * 3.14159 / 180;
 
+      Estate vanjak = new Estate(geoDefinition);
+
       // svi su u DonjiVrt
       // dodati garden plot za krumpire, kapulu, salatu i jagode
 

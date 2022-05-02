@@ -16,7 +16,6 @@ namespace EstateManager.Domain
     public EstateGeoDefinition GeoDefinition { get => _geoDefinition; set => _geoDefinition = value; }
     public List<EstatePart> EstateParts { get => _estateParts; private set => _estateParts = value; }
 
-
     public Estate()
     {
       // default je Dupci estate
