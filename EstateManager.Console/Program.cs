@@ -33,13 +33,19 @@ namespace EstateManager.ConsoleApp
       GardenPlot zvSalata = new GardenPlot(new DateTime(2022, 2, 1), "Salata", partZVrt);
       GardenPlot zvJagode= new GardenPlot(new DateTime(2022, 2, 1), "Jagode", partZVrt);
       GardenPlot zvKrumpiri = new GardenPlot(new DateTime(2022, 2, 1), "Krumpiri", partZVrt);
-      GardenPlot zvPomidori = new GardenPlot(new DateTime(2022, 4, 1), "Krumpiri", partZVrt);
-      GardenPlot zvPaprike = new GardenPlot(new DateTime(2022, 4, 1), "Krumpiri", partZVrt);
+
+      GardenPlot zvPomidori = new GardenPlot(new DateTime(2022, 4, 1), "Pomidori", partZVrt);
+      GardenPlot zvPaprike = new GardenPlot(new DateTime(2022, 4, 1), "Paprike", partZVrt);
+      // posađene 10.4.
+      // smrzle 17.4.
+      // uništene 5.5.
 
       partZVrt.GardenParts.Add(zvKrumpiri);
       partZVrt.GardenParts.Add(zvSalata);
       partZVrt.GardenParts.Add(zvJagode);
       partZVrt.GardenParts.Add(zvLuk);
+      partZVrt.GardenParts.Add(zvPaprike);
+      partZVrt.GardenParts.Add(zvPomidori);
 
       TestDistances(geoDefinition);
     }
