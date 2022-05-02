@@ -30,9 +30,17 @@ namespace EstateManager.ConsoleApp
       vanjak.EstateParts.Add(partIVrt);
 
       GardenPlot zvLuk = new GardenPlot(new DateTime(2022, 2, 1), "Luk", partZVrt);
+      partZVrt.CurrentGardenPlots.Add(zvLuk);
+
       GardenPlot zvSalata = new GardenPlot(new DateTime(2022, 2, 1), "Salata", partZVrt);
-      GardenPlot zvJagode= new GardenPlot(new DateTime(2022, 2, 1), "Jagode", partZVrt);
+      partZVrt.CurrentGardenPlots.Add(zvSalata);
+
+      GardenPlot zvJagode = new GardenPlot(new DateTime(2022, 2, 1), "Jagode", partZVrt);
+      partZVrt.CurrentGardenPlots.Add(zvJagode);
+
       GardenPlot zvKrumpiri = new GardenPlot(new DateTime(2022, 2, 1), "Krumpiri", partZVrt);
+      // 6 redova krumpira
+      partZVrt.CurrentGardenPlots.Add(zvKrumpiri);
 
       GardenPlot zvPomidori = new GardenPlot(new DateTime(2022, 4, 1), "Pomidori", partZVrt);
       GardenPlot zvPaprike = new GardenPlot(new DateTime(2022, 4, 1), "Paprike", partZVrt);
@@ -40,12 +48,8 @@ namespace EstateManager.ConsoleApp
       // smrzle 17.4.
       // uništene 5.5.
 
-      partZVrt.GardenParts.Add(zvKrumpiri);
-      partZVrt.GardenParts.Add(zvSalata);
-      partZVrt.GardenParts.Add(zvJagode);
-      partZVrt.GardenParts.Add(zvLuk);
-      partZVrt.GardenParts.Add(zvPaprike);
-      partZVrt.GardenParts.Add(zvPomidori);
+      partZVrt.HistoricalPlots.Add(zvPaprike);
+      partZVrt.HistoricalPlots.Add(zvPomidori);
 
       TestDistances(geoDefinition);
     }
