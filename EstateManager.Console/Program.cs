@@ -19,9 +19,17 @@ namespace EstateManager.ConsoleApp
       geoDefinition._localOrigin = geoDefinition.BorderPoints[1];
       geoDefinition._localRotation = 19.9055 * 3.14159 / 180;
 
+      // svi su u DonjiVrt
+      // dodati garden plot za krumpire, kapulu, salatu i jagode
+
+      TestDistances(geoDefinition);
+    }
+
+    static void TestDistances(EstateGeoDefinition geoDefinition)
+    {
       GeoCoord origin = geoDefinition.BorderPoints[1];
 
-      for( int i= 0; i < 4; i++ )
+      for (int i = 0; i < 4; i++)
       {
         int j = (i + 1) % 4;
         double dist = Transformations.Distance(geoDefinition.BorderPoints[i], geoDefinition.BorderPoints[j]);

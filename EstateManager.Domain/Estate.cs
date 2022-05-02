@@ -13,11 +13,23 @@ namespace EstateManager.Domain
 
     public List<EstatePart> _estateParts = new List<EstatePart>();
 
+    public Estate()
+    {
+      // default je Dupci estate
+      _geoDefinition = new EstateGeoDefinition();
+
+      _geoDefinition.BorderPoints.Add(new GeoCoord() { Latitude = 45.73779885083265, Longitude = 15.936093764979713 });
+      _geoDefinition.BorderPoints.Add(new GeoCoord() { Latitude = 45.73775302153398, Longitude = 15.93626284812708 });
+      _geoDefinition.BorderPoints.Add(new GeoCoord() { Latitude = 45.735977758275176, Longitude = 15.93523577830417 });
+      _geoDefinition.BorderPoints.Add(new GeoCoord() { Latitude = 45.735962290389196, Longitude = 15.935010881339498 });
+
+      _geoDefinition._localOrigin = _geoDefinition.BorderPoints[1];
+      _geoDefinition._localRotation = 19.9055 * 3.14159 / 180;
+    }
+
     public Estate(EstateGeoDefinition inGeoDef)
     {
       _geoDefinition = inGeoDef;
-      // svi su u DonjiVrt
-      // dodati garden plot za krumpire, kapulu, salatu i jagode
     }
     EstatePart getAtLocation(PointF pnt)
     {
