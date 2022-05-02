@@ -21,14 +21,23 @@ namespace EstateManager.ConsoleApp
 
       Estate vanjak = new Estate(geoDefinition);
 
-      EstatePart part1 = new EstatePart("Skladište", "skladište");
-      EstatePart partZVrt = new Garden("Zvonin vrt");
-      EstatePart partIVrt = new Garden("Ivankin vrt");
-
+      EstatePart part1 = new AuxiliaryBuilding("Skladište", "skladište");
+      var partZVrt = new Garden("Zvonin vrt");
+      var partIVrt = new Garden("Ivankin vrt");
 
       vanjak.EstateParts.Add(part1);
       vanjak.EstateParts.Add(partZVrt);
       vanjak.EstateParts.Add(partIVrt);
+
+      GardenPlot zvLuk = new GardenPlot(new DateTime(2022, 2, 1), "Luk", partZVrt);
+      GardenPlot zvSalata = new GardenPlot(new DateTime(2022, 2, 1), "Luk", partZVrt);
+      GardenPlot zvJagode= new GardenPlot(new DateTime(2022, 2, 1), "Luk", partZVrt);
+      GardenPlot zvKrumpiri = new GardenPlot(new DateTime(2022, 2, 1), "Luk", partZVrt);
+
+      partZVrt.GardenParts.Add(zvKrumpiri);
+      partZVrt.GardenParts.Add(zvSalata);
+      partZVrt.GardenParts.Add(zvJagode);
+      partZVrt.GardenParts.Add(zvLuk);
 
       TestDistances(geoDefinition);
     }

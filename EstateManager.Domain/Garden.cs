@@ -18,9 +18,8 @@ namespace EstateManager.Domain
     public Garden()
     { }
 
-    public Garden(string inName)
+    public Garden(string inName) : base(inName, "Garden")
     {
-      Name = inName;
     }
   }
 }
