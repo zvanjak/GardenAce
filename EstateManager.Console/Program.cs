@@ -47,7 +47,6 @@ namespace EstateManager.ConsoleApp
       // posađene 10.4.
       // smrzle 17.4.
       // uništene 5.5.
-
       partZVrt.HistoricalPlots.Add(zvPaprike);
       partZVrt.HistoricalPlots.Add(zvPomidori);
 
