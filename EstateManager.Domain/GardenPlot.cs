@@ -13,20 +13,23 @@ namespace EstateManager.Domain
     DateTime _dateCreated;
     DateTime _dateDestroyed;
     Garden _parentPlot;
-    List<MML.Polygon2D> _polygon;
+    MML.Polygon2D _polygon;
+    List<GardenRow> _rows;
 
     public string Name { get => _name; set => _name = value; }
     public Garden ParentPlot { get => _parentPlot; set => _parentPlot = value; }
-    public List<Polygon2D> Polygon { get => _polygon; private set => _polygon = value; }
     public DateTime DateCreated { get => _dateCreated; set => _dateCreated = value; }
     public DateTime DateDestroyed { get => _dateDestroyed; set => _dateDestroyed = value; }
+    public Polygon2D Polygon { get => _polygon; set => _polygon = value; }
+    public List<GardenRow> Rows { get => _rows; private set => _rows = value; }
 
     public GardenPlot(DateTime inCreated, string inName, Garden inParent)
     {
       Name = inName;
       ParentPlot = inParent;
       DateCreated = inCreated;
-      Polygon = new List<MML.Polygon2D>();
+      Polygon = new MML.Polygon2D();
+      Rows = new List<GardenRow>();
     }
 
 
