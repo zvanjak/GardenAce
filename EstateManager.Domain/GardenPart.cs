@@ -8,5 +8,8 @@ namespace EstateManager.Domain
 {
   public class GardenPart
   {
+    GardenPlot _parentPlot;
+
+    List<MML.Polygon2D> _polygon;
   }
 }

@@ -9,6 +9,6 @@ namespace EstateManager.Domain
   public class EstatePart
   {
     // osnovno - zauzima dio tlocrta od estate!
-    List<Point2D> _polygon;
+    List<MML.Polygon2D> _polygon;
   }
 }
