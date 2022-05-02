@@ -11,6 +11,7 @@ namespace EstateManager.Domain
   {
     string _name;
     DateTime _dateCreated;
+    DateTime _dateDestroyed;
     Garden _parentPlot;
     List<MML.Polygon2D> _polygon;
 
@@ -18,6 +19,7 @@ namespace EstateManager.Domain
     public Garden ParentPlot { get => _parentPlot; set => _parentPlot = value; }
     public List<Polygon2D> Polygon { get => _polygon; private set => _polygon = value; }
     public DateTime DateCreated { get => _dateCreated; set => _dateCreated = value; }
+    public DateTime DateDestroyed { get => _dateDestroyed; set => _dateDestroyed = value; }
 
     public GardenPlot(DateTime inCreated, string inName, Garden inParent)
     {

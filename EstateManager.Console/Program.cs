@@ -30,9 +30,11 @@ namespace EstateManager.ConsoleApp
       vanjak.EstateParts.Add(partIVrt);
 
       GardenPlot zvLuk = new GardenPlot(new DateTime(2022, 2, 1), "Luk", partZVrt);
-      GardenPlot zvSalata = new GardenPlot(new DateTime(2022, 2, 1), "Luk", partZVrt);
-      GardenPlot zvJagode= new GardenPlot(new DateTime(2022, 2, 1), "Luk", partZVrt);
-      GardenPlot zvKrumpiri = new GardenPlot(new DateTime(2022, 2, 1), "Luk", partZVrt);
+      GardenPlot zvSalata = new GardenPlot(new DateTime(2022, 2, 1), "Salata", partZVrt);
+      GardenPlot zvJagode= new GardenPlot(new DateTime(2022, 2, 1), "Jagode", partZVrt);
+      GardenPlot zvKrumpiri = new GardenPlot(new DateTime(2022, 2, 1), "Krumpiri", partZVrt);
+      GardenPlot zvPomidori = new GardenPlot(new DateTime(2022, 4, 1), "Krumpiri", partZVrt);
+      GardenPlot zvPaprike = new GardenPlot(new DateTime(2022, 4, 1), "Krumpiri", partZVrt);
 
       partZVrt.GardenParts.Add(zvKrumpiri);
       partZVrt.GardenParts.Add(zvSalata);
