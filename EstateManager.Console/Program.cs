@@ -21,6 +21,8 @@ namespace EstateManager.ConsoleApp
 
       Estate vanjak = new Estate(geoDefinition);
 
+      EstatePart part1 = new EstatePart("Skladište", "skladište");
+      EstatePart part2 = new GardenPlot("Zvonin vrt");
       // svi su u DonjiVrt
       // dodati garden plot za krumpire, kapulu, salatu i jagode
 
