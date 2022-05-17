@@ -31,6 +31,17 @@ namespace EstateManager.Domain
 
       GeoDefinition._localOrigin = GeoDefinition.BorderPoints[1];
       GeoDefinition._localRotation = 19.9055 * 3.14159 / 180;
+
+      GeoCoord origin = GeoDefinition.BorderPoints[1];
+
+      for (int i = 0; i < 4; i++)
+      {
+        GeoCoord pnt = GeoDefinition.BorderPoints[i];
+
+        double x, y;
+        Transformations.LocalCoord(origin, pnt, out x, out y);
+        // dodati točku u Polygon
+      }
     }
 
     public Estate(EstateGeoDefinition inGeoDef)
@@ -39,6 +50,7 @@ namespace EstateManager.Domain
     }
 
     // TODO 
+   
 
     EstatePart getAtLocation(PointF pnt)
     {
