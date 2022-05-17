@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Media.Media3D;
 using System.Windows.Media;
+using MML;
 
 namespace EstateManager.Domain
 {
@@ -11,10 +12,12 @@ namespace EstateManager.Domain
     private string _name;   // Dupci, Sukošan, Silba
     private EstateGeoDefinition _geoDefinition;
     private List<EstatePart> _estateParts = new List<EstatePart>();
+    private Polygon2D _localPolygon;
 
     public string Name { get => _name; set => _name = value; }
     public EstateGeoDefinition GeoDefinition { get => _geoDefinition; set => _geoDefinition = value; }
     public List<EstatePart> EstateParts { get => _estateParts; private set => _estateParts = value; }
+    public Polygon2D LocalPolygon { get => _localPolygon; set => _localPolygon = value; }
 
     public Estate()
     {
@@ -34,6 +37,8 @@ namespace EstateManager.Domain
     {
       GeoDefinition = inGeoDef;
     }
+
+    // TODO 
 
     EstatePart getAtLocation(PointF pnt)
     {
