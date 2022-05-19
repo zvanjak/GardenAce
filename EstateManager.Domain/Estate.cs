@@ -46,7 +46,10 @@ namespace EstateManager.Domain
       //EstatePart part1 = new AuxiliaryBuilding("Skladište", "skladište");
       
       MML.Polygon2D zvVrt = new Polygon2D();
-      var partZVrt = new Garden("Zvonin vrt", new Polygon2D( new List<MML.Point2D> { new MML.Point2D(14, -60), new MML.Point2D(14, -80), new MML.Point2D(-4, -80), new MML.Point2D(-4, -60) }));
+      var partZVrt = new Garden("Zvonin vrt", new Polygon2D( new List<MML.Point2D> { new MML.Point2D(14, -60), 
+                                                                                     new MML.Point2D(14, -80), 
+                                                                                     new MML.Point2D(-4, -80), 
+                                                                                     new MML.Point2D(-4, -60) }));
 
       MML.Polygon2D ivVrt = new Polygon2D();
       ivVrt.ListPoints.Add(new MML.Point2D(14, -40));
@@ -58,6 +61,14 @@ namespace EstateManager.Domain
       //EstateParts.Add(part1);
       EstateParts.Add(partZVrt);
       EstateParts.Add(partIVrt);
+
+      GardenPlot zvKrumpiri = new GardenPlot(new DateTime(2022, 2, 1), "Krumpiri", partZVrt, new Polygon2D(new List<MML.Point2D> { new MML.Point2D(14, -62),
+                                                                                     new MML.Point2D(14, -80),
+                                                                                     new MML.Point2D(0, -80),
+                                                                                     new MML.Point2D(0, -62) }));
+      // 6 redova krumpira
+      partZVrt.CurrentGardenPlots.Add(zvKrumpiri);
+
     }
 
     public Estate(EstateGeoDefinition inGeoDef)
