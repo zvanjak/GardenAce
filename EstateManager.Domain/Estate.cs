@@ -46,13 +46,24 @@ namespace EstateManager.Domain
       //EstatePart part1 = new AuxiliaryBuilding("Skladište", "skladište");
       
       MML.Polygon2D zvVrt = new Polygon2D();
-      zvVrt.ListPoints.Add(new MML.Point2D(10, 10));
-      zvVrt.ListPoints.Add(new MML.Point2D(50, 10));
-      zvVrt.ListPoints.Add(new MML.Point2D(50, 50));
-      zvVrt.ListPoints.Add(new MML.Point2D(10, 50));
+      zvVrt.ListPoints.Add(new MML.Point2D(-14, -60));
+      zvVrt.ListPoints.Add(new MML.Point2D(-14, -80));
+      zvVrt.ListPoints.Add(new MML.Point2D(4, -60));
+      zvVrt.ListPoints.Add(new MML.Point2D(4, -80));
 
       var partZVrt = new Garden("Zvonin vrt", zvVrt);
       var partIVrt = new Garden("Ivankin vrt");
+
+      //MeshGeometry3D myPlot1Mesh3D = CreateParallelepiped(new Point3D(-5.5, 46.5 + 6, 0.05), 14.0, 9.0, 0.1);
+      //var myPlot1Material = new DiffuseMaterial(new SolidColorBrush(Colors.Brown));
+      //GeometryModel3D myPlot1 = new GeometryModel3D(myPlot1Mesh3D, myPlot1Material);
+      //myModel3DGroup.Children.Add(myPlot1);
+
+      //MeshGeometry3D myPlot2Mesh3D = CreateParallelepiped(new Point3D(-5.5, 69, 0.05), 14.0, 20.0, 0.1);
+      //var myPlot2Material = new DiffuseMaterial(new SolidColorBrush(Colors.Brown));
+      //GeometryModel3D myPlot2 = new GeometryModel3D(myPlot2Mesh3D, myPlot2Material);
+      //myModel3DGroup.Children.Add(myPlot2);
+
 
       //EstateParts.Add(part1);
       EstateParts.Add(partZVrt);
