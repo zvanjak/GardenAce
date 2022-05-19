@@ -23,5 +23,9 @@ namespace EstateManager.Domain
     public Garden(string inName) : base(inName, "Garden")
     {
     }
+
+    public Garden(string inName, MML.Polygon2D polygon) : base(inName, "Garden", polygon)
+    {
+    }
   }
 }
