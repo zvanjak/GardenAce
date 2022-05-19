@@ -43,13 +43,20 @@ namespace EstateManager.Domain
         LocalPolygon.ListPoints.Add(new Point2D(x, y));
       }
 
-      EstatePart part1 = new AuxiliaryBuilding("Skladište", "skladište");
-      var partZVrt = new Garden("Zvonin vrt");
+      //EstatePart part1 = new AuxiliaryBuilding("Skladište", "skladište");
+      
+      MML.Polygon2D zvVrt = new Polygon2D();
+      zvVrt.ListPoints.Add(new MML.Point2D(10, 10));
+      zvVrt.ListPoints.Add(new MML.Point2D(50, 10));
+      zvVrt.ListPoints.Add(new MML.Point2D(50, 50));
+      zvVrt.ListPoints.Add(new MML.Point2D(10, 50));
+
+      var partZVrt = new Garden("Zvonin vrt", zvVrt);
       var partIVrt = new Garden("Ivankin vrt");
 
-      EstateParts.Add(part1);
+      //EstateParts.Add(part1);
       EstateParts.Add(partZVrt);
-      EstateParts.Add(partIVrt);
+      //EstateParts.Add(partIVrt);
     }
 
     public Estate(EstateGeoDefinition inGeoDef)
