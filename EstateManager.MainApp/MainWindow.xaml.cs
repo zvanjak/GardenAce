@@ -101,6 +101,10 @@ namespace EstateManager.MainApp
       myModel3DGroup.Children.Add(myPlot2);
 
       // idemo dodati Estate polygon
+      MeshGeometry3D myEstate = CreatePolygon(_estate.LocalPolygon.ListPoints, 0.2);
+      var myEstateMaterial = new DiffuseMaterial(new SolidColorBrush(Colors.Yellow));
+      GeometryModel3D myEstateModel = new GeometryModel3D(myEstate, myEstateMaterial);
+      myModel3DGroup.Children.Add(myEstateModel);
 
 
 
