@@ -64,13 +64,13 @@ namespace EstateManager.MainApp
       myDirectionalLight.Direction = new Vector3D(-0.61, -0.5, -0.61);
       myModel3DGroup.Children.Add(myDirectionalLight);
 
-      GeometryModel3D myGeometryModel = CreateInitial();
-      myModel3DGroup.Children.Add(myGeometryModel);
+      //GeometryModel3D myGeometryModel = CreateInitial();
+      //myModel3DGroup.Children.Add(myGeometryModel);
 
-      MeshGeometry3D podloga = CreateParallelepiped(new Point3D(0, 100, -0.1), 100.0, 300.0, 0.01);
-      var podlogaMaterial = new DiffuseMaterial(new SolidColorBrush(Colors.LightGray));
-      GeometryModel3D podlogaModel = new GeometryModel3D(podloga, podlogaMaterial);
-      myModel3DGroup.Children.Add(podlogaModel);
+      //MeshGeometry3D podloga = CreateParallelepiped(new Point3D(0, 100, -0.1), 100.0, 300.0, 0.01);
+      //var podlogaMaterial = new DiffuseMaterial(new SolidColorBrush(Colors.LightGray));
+      //GeometryModel3D podlogaModel = new GeometryModel3D(podloga, podlogaMaterial);
+      //myModel3DGroup.Children.Add(podlogaModel);
 
       MeshGeometry3D Teretana = CreateParallelepiped(new Point3D(4.5, 10.5, 1.5), 6.5, 20.8, 2.5);
       var teretanaMaterial = new DiffuseMaterial(new SolidColorBrush(Colors.Gray));
@@ -292,12 +292,12 @@ namespace EstateManager.MainApp
 
       // gornja ploha
       mesh.TriangleIndices.Add(0);
-      mesh.TriangleIndices.Add(1);
       mesh.TriangleIndices.Add(2);
+      mesh.TriangleIndices.Add(1);
 
-      mesh.TriangleIndices.Add(1);
-      mesh.TriangleIndices.Add(2);
+      mesh.TriangleIndices.Add(0);
       mesh.TriangleIndices.Add(3);
+      mesh.TriangleIndices.Add(2);
 
       return mesh;
     }
