@@ -100,6 +100,10 @@ namespace EstateManager.MainApp
       GeometryModel3D myPlot2 = new GeometryModel3D(myPlot2Mesh3D, myPlot2Material);
       myModel3DGroup.Children.Add(myPlot2);
 
+      // idemo dodati Estate polygon
+
+
+
       // Add the group of models to the ModelVisual3d.
       myModelVisual3D.Content = myModel3DGroup;
 

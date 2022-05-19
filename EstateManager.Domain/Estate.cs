@@ -10,9 +10,9 @@ namespace EstateManager.Domain
   public class Estate
   {
     private string _name;   // Dupci, Sukošan, Silba
-    private EstateGeoDefinition _geoDefinition;
+    private EstateGeoDefinition _geoDefinition = new EstateGeoDefinition();
     private List<EstatePart> _estateParts = new List<EstatePart>();
-    private Polygon2D _localPolygon;
+    private Polygon2D _localPolygon = new Polygon2D();
 
     public string Name { get => _name; set => _name = value; }
     public EstateGeoDefinition GeoDefinition { get => _geoDefinition; set => _geoDefinition = value; }
@@ -22,8 +22,6 @@ namespace EstateManager.Domain
     public Estate()
     {
       // default je Dupci estate
-      GeoDefinition = new EstateGeoDefinition();
-
       GeoDefinition.BorderPoints.Add(new GeoCoord() { Latitude = 45.73779885083265, Longitude = 15.936093764979713 });
       GeoDefinition.BorderPoints.Add(new GeoCoord() { Latitude = 45.73775302153398, Longitude = 15.93626284812708 });
       GeoDefinition.BorderPoints.Add(new GeoCoord() { Latitude = 45.735977758275176, Longitude = 15.93523577830417 });
