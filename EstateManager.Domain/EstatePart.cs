@@ -12,11 +12,11 @@ namespace EstateManager.Domain
   {
     private string _name;
     private string _description;
-    private List<MML.Polygon2D> _polygon;   // prebaciti u Rectangle u lokanim koordinatama
+    private MML.Polygon2D _polygon;   // prebaciti u Rectangle u lokanim koordinatama
 
     public string Name { get => _name; set => _name = value; }
     public string Description { get => _description; set => _description = value; }
-    public List<Polygon2D> Polygon { get => _polygon; set => _polygon = value; }
+    public Polygon2D Polygon { get => _polygon; set => _polygon = value; }
 
     public EstatePart()
     { }
@@ -25,6 +25,13 @@ namespace EstateManager.Domain
     {
       Name = inName;
       Description = inDesc; 
+    }
+
+    public EstatePart(string inName, string inDesc, MML.Polygon2D polygon)
+    {
+      Name = inName;
+      Description = inDesc;
+      Polygon = polygon;
     }
 
 
