@@ -277,69 +277,23 @@ namespace EstateManager.MainApp
       MeshGeometry3D mesh = new MeshGeometry3D();
 
       Point3D p1 = new Point3D(list[0].X, list[0].Y, z);
+      Point3D p2 = new Point3D(list[1].X, list[1].Y, z);
+      Point3D p3 = new Point3D(list[2].X, list[2].Y, z);
+      Point3D p4 = new Point3D(list[3].X, list[3].Y, z);
 
       mesh.Positions.Add(p1);
       mesh.Positions.Add(p2);
       mesh.Positions.Add(p3);
       mesh.Positions.Add(p4);
-      mesh.Positions.Add(p5);
-      mesh.Positions.Add(p6);
-      mesh.Positions.Add(p7);
-      mesh.Positions.Add(p8);
 
       // gornja ploha
       mesh.TriangleIndices.Add(0);
       mesh.TriangleIndices.Add(1);
       mesh.TriangleIndices.Add(2);
 
-      mesh.TriangleIndices.Add(0);
-      mesh.TriangleIndices.Add(2);
-      mesh.TriangleIndices.Add(3);
-
-      // donja ploha
-      mesh.TriangleIndices.Add(4);
-      mesh.TriangleIndices.Add(6);
-      mesh.TriangleIndices.Add(5);
-
-      mesh.TriangleIndices.Add(4);
-      mesh.TriangleIndices.Add(7);
-      mesh.TriangleIndices.Add(6);
-
-      // srednja 1 ploha
-      mesh.TriangleIndices.Add(0);
-      mesh.TriangleIndices.Add(5);
       mesh.TriangleIndices.Add(1);
-
-      mesh.TriangleIndices.Add(0);
-      mesh.TriangleIndices.Add(4);
-      mesh.TriangleIndices.Add(5);
-
-      // srednja 2 ploha
-      mesh.TriangleIndices.Add(1);
-      mesh.TriangleIndices.Add(5);
-      mesh.TriangleIndices.Add(6);
-
-      mesh.TriangleIndices.Add(1);
-      mesh.TriangleIndices.Add(6);
       mesh.TriangleIndices.Add(2);
-
-      // srednja 3 ploha
-      mesh.TriangleIndices.Add(2);
-      mesh.TriangleIndices.Add(6);
-      mesh.TriangleIndices.Add(7);
-
-      mesh.TriangleIndices.Add(2);
-      mesh.TriangleIndices.Add(7);
       mesh.TriangleIndices.Add(3);
-
-      // srednja 4 ploha
-      mesh.TriangleIndices.Add(3);
-      mesh.TriangleIndices.Add(7);
-      mesh.TriangleIndices.Add(4);
-
-      mesh.TriangleIndices.Add(3);
-      mesh.TriangleIndices.Add(4);
-      mesh.TriangleIndices.Add(0);
 
       return mesh;
     }
