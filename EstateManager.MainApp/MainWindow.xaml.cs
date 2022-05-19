@@ -106,7 +106,15 @@ namespace EstateManager.MainApp
       GeometryModel3D myEstateModel = new GeometryModel3D(myEstate, myEstateMaterial);
       myModel3DGroup.Children.Add(myEstateModel);
 
+      foreach(var part in _estate.EstateParts)
+      {
+        MML.Polygon2D poly = part.Polygon;
 
+        MeshGeometry3D myPartGeom = CreatePolygon(poly.ListPoints, 0.2);
+        var myPartMaterial = new DiffuseMaterial(new SolidColorBrush(Colors.Yellow));
+        GeometryModel3D myPartModel = new GeometryModel3D(myEstate, myEstateMaterial);
+        myModel3DGroup.Children.Add(myPartModel);
+      }
 
       // Add the group of models to the ModelVisual3d.
       myModelVisual3D.Content = myModel3DGroup;
