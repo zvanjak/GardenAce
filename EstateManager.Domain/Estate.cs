@@ -46,11 +46,7 @@ namespace EstateManager.Domain
       //EstatePart part1 = new AuxiliaryBuilding("Skladište", "skladište");
       
       MML.Polygon2D zvVrt = new Polygon2D();
-      zvVrt.ListPoints.Add(new MML.Point2D(14, -60));
-      zvVrt.ListPoints.Add(new MML.Point2D(14, -80));
-      zvVrt.ListPoints.Add(new MML.Point2D(-4, -80));
-      zvVrt.ListPoints.Add(new MML.Point2D(-4, -60));
-      var partZVrt = new Garden("Zvonin vrt", zvVrt);
+      var partZVrt = new Garden("Zvonin vrt", new Polygon2D( new List<MML.Point2D> { new MML.Point2D(14, -60), new MML.Point2D(14, -80), new MML.Point2D(-4, -80), new MML.Point2D(-4, -60) }));
 
       MML.Polygon2D ivVrt = new Polygon2D();
       ivVrt.ListPoints.Add(new MML.Point2D(14, -40));
