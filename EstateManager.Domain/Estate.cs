@@ -41,6 +41,8 @@ namespace EstateManager.Domain
         double x, y;
         Transformations.LocalCoord(origin, pnt, out x, out y);
         // dodati točku u Polygon
+
+        LocalPolygon.ListPoints.Add(new Point2D(x, y));
       }
     }
 
