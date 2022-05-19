@@ -32,6 +32,13 @@ namespace EstateManager.Domain
       Rows = new List<SeededGardenRow>();
     }
 
-
+    public GardenPlot(DateTime inCreated, string inName, Garden inParent, Polygon2D polygon)
+    {
+      Name = inName;
+      ParentPlot = inParent;
+      DateCreated = inCreated;
+      Polygon = polygon;
+      Rows = new List<SeededGardenRow>();
+    }
   }
 }

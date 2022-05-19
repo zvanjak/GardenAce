@@ -59,17 +59,6 @@ namespace EstateManager.Domain
       ivVrt.ListPoints.Add(new MML.Point2D(-1.5, -40)); 
       var partIVrt = new Garden("Ivankin vrt", ivVrt);
 
-      //MeshGeometry3D myPlot1Mesh3D = CreateParallelepiped(new Point3D(-5.5, 46.5 + 6, 0.05), 14.0, 9.0, 0.1);
-      //var myPlot1Material = new DiffuseMaterial(new SolidColorBrush(Colors.Brown));
-      //GeometryModel3D myPlot1 = new GeometryModel3D(myPlot1Mesh3D, myPlot1Material);
-      //myModel3DGroup.Children.Add(myPlot1);
-
-      //MeshGeometry3D myPlot2Mesh3D = CreateParallelepiped(new Point3D(-5.5, 69, 0.05), 14.0, 20.0, 0.1);
-      //var myPlot2Material = new DiffuseMaterial(new SolidColorBrush(Colors.Brown));
-      //GeometryModel3D myPlot2 = new GeometryModel3D(myPlot2Mesh3D, myPlot2Material);
-      //myModel3DGroup.Children.Add(myPlot2);
-
-
       //EstateParts.Add(part1);
       EstateParts.Add(partZVrt);
       EstateParts.Add(partIVrt);
