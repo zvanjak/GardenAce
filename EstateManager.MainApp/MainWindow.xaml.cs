@@ -72,33 +72,33 @@ namespace EstateManager.MainApp
       //GeometryModel3D podlogaModel = new GeometryModel3D(podloga, podlogaMaterial);
       //myModel3DGroup.Children.Add(podlogaModel);
 
-      MeshGeometry3D Teretana = CreateParallelepiped(new Point3D(4.5, 10.5, 1.5), 6.5, 20.8, 2.5);
-      var teretanaMaterial = new DiffuseMaterial(new SolidColorBrush(Colors.Gray));
-      GeometryModel3D teretanaModel = new GeometryModel3D(Teretana, teretanaMaterial);
-      myModel3DGroup.Children.Add(teretanaModel);
+      //MeshGeometry3D Teretana = CreateParallelepiped(new Point3D(4.5, 10.5, 1.5), 6.5, 20.8, 2.5);
+      //var teretanaMaterial = new DiffuseMaterial(new SolidColorBrush(Colors.Gray));
+      //GeometryModel3D teretanaModel = new GeometryModel3D(Teretana, teretanaMaterial);
+      //myModel3DGroup.Children.Add(teretanaModel);
 
-      MeshGeometry3D kuca = CreateParallelepiped(new Point3D(6.7, 20.8 + 11.75 / 2, 2.5), 7.77, 11.75, 5);
-      GeometryModel3D kucaModel = new GeometryModel3D(kuca, teretanaMaterial);
-      myModel3DGroup.Children.Add(kucaModel);
+      //MeshGeometry3D kuca = CreateParallelepiped(new Point3D(6.7, 20.8 + 11.75 / 2, 2.5), 7.77, 11.75, 5);
+      //GeometryModel3D kucaModel = new GeometryModel3D(kuca, teretanaMaterial);
+      //myModel3DGroup.Children.Add(kucaModel);
 
-      MeshGeometry3D konoba = CreateParallelepiped(new Point3D(-5.5, 38.0, 1.0), 5.5, 9.5, 2);
-      GeometryModel3D konobaModel = new GeometryModel3D(konoba, teretanaMaterial);
-      myModel3DGroup.Children.Add(konobaModel);
+      //MeshGeometry3D konoba = CreateParallelepiped(new Point3D(-5.5, 38.0, 1.0), 5.5, 9.5, 2);
+      //GeometryModel3D konobaModel = new GeometryModel3D(konoba, teretanaMaterial);
+      //myModel3DGroup.Children.Add(konobaModel);
 
       //MeshGeometry3D myCubeMesh3D = CreateCube(new Point3D(5, 5, 5), 10.0);
       //var myCubeMaterial = new DiffuseMaterial(new SolidColorBrush(Color.FromRgb(255, 250, 245)));
       //GeometryModel3D myCube = new GeometryModel3D(myCubeMesh3D, myCubeMaterial);
       //myModel3DGroup.Children.Add(myCube);
 
-      MeshGeometry3D myPlot1Mesh3D = CreateParallelepiped(new Point3D(-5.5, 46.5 + 6, 0.05), 14.0, 9.0, 0.1);
-      var myPlot1Material = new DiffuseMaterial(new SolidColorBrush(Colors.Brown));
-      GeometryModel3D myPlot1 = new GeometryModel3D(myPlot1Mesh3D, myPlot1Material);
-      myModel3DGroup.Children.Add(myPlot1);
+      //MeshGeometry3D myPlot1Mesh3D = CreateParallelepiped(new Point3D(-5.5, 46.5 + 6, 0.05), 14.0, 9.0, 0.1);
+      //var myPlot1Material = new DiffuseMaterial(new SolidColorBrush(Colors.Brown));
+      //GeometryModel3D myPlot1 = new GeometryModel3D(myPlot1Mesh3D, myPlot1Material);
+      //myModel3DGroup.Children.Add(myPlot1);
 
-      MeshGeometry3D myPlot2Mesh3D = CreateParallelepiped(new Point3D(-5.5, 69, 0.05), 14.0, 20.0, 0.1);
-      var myPlot2Material = new DiffuseMaterial(new SolidColorBrush(Colors.Brown));
-      GeometryModel3D myPlot2 = new GeometryModel3D(myPlot2Mesh3D, myPlot2Material);
-      myModel3DGroup.Children.Add(myPlot2);
+      //MeshGeometry3D myPlot2Mesh3D = CreateParallelepiped(new Point3D(-5.5, 69, 0.05), 14.0, 20.0, 0.1);
+      //var myPlot2Material = new DiffuseMaterial(new SolidColorBrush(Colors.Brown));
+      //GeometryModel3D myPlot2 = new GeometryModel3D(myPlot2Mesh3D, myPlot2Material);
+      //myModel3DGroup.Children.Add(myPlot2);
 
       // idemo dodati Estate polygon
       MeshGeometry3D myEstate = CreatePolygon(_estate.LocalPolygon.ListPoints, 0.2);
@@ -110,9 +110,9 @@ namespace EstateManager.MainApp
       {
         MML.Polygon2D poly = part.Polygon;
 
-        MeshGeometry3D myPartGeom = CreatePolygon(poly.ListPoints, 0.2);
-        var myPartMaterial = new DiffuseMaterial(new SolidColorBrush(Colors.Yellow));
-        GeometryModel3D myPartModel = new GeometryModel3D(myEstate, myEstateMaterial);
+        MeshGeometry3D myPartGeom = CreatePolygon(poly.ListPoints, 0.4);
+        var myPartMaterial = new DiffuseMaterial(new SolidColorBrush(Colors.Brown));
+        GeometryModel3D myPartModel = new GeometryModel3D(myPartGeom, myPartMaterial);
         myModel3DGroup.Children.Add(myPartModel);
       }
 
