@@ -28,8 +28,8 @@ namespace EstateManager.MainApp
 
     PerspectiveCamera myPCamera = new PerspectiveCamera();
 
-    Point3D _cameraPos = new Point3D(70, 40, 80);
-    Point3D _lookToPos = new Point3D(15, 20, 0);
+    Point3D _cameraPos = new Point3D(-70, 40, 60);
+    Point3D _lookToPos = new Point3D(0, -50, 0);
 
     Point3D _startCameraPosRButtonClick;
 
