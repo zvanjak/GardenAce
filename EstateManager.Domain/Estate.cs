@@ -50,9 +50,14 @@ namespace EstateManager.Domain
       zvVrt.ListPoints.Add(new MML.Point2D(14, -80));
       zvVrt.ListPoints.Add(new MML.Point2D(-4, -80));
       zvVrt.ListPoints.Add(new MML.Point2D(-4, -60));
-
       var partZVrt = new Garden("Zvonin vrt", zvVrt);
-      var partIVrt = new Garden("Ivankin vrt");
+
+      MML.Polygon2D ivVrt = new Polygon2D();
+      ivVrt.ListPoints.Add(new MML.Point2D(14, -40));
+      ivVrt.ListPoints.Add(new MML.Point2D(14, -50));
+      ivVrt.ListPoints.Add(new MML.Point2D(-1.5, -50));
+      ivVrt.ListPoints.Add(new MML.Point2D(-1.5, -40)); 
+      var partIVrt = new Garden("Ivankin vrt", ivVrt);
 
       //MeshGeometry3D myPlot1Mesh3D = CreateParallelepiped(new Point3D(-5.5, 46.5 + 6, 0.05), 14.0, 9.0, 0.1);
       //var myPlot1Material = new DiffuseMaterial(new SolidColorBrush(Colors.Brown));
@@ -67,7 +72,7 @@ namespace EstateManager.Domain
 
       //EstateParts.Add(part1);
       EstateParts.Add(partZVrt);
-      //EstateParts.Add(partIVrt);
+      EstateParts.Add(partIVrt);
     }
 
     public Estate(EstateGeoDefinition inGeoDef)
