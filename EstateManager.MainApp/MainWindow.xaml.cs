@@ -272,6 +272,78 @@ namespace EstateManager.MainApp
       return mesh;
     }
 
+    public static MeshGeometry3D CreatePolygon(List<MML.Point2D> list, double z )
+    {
+      MeshGeometry3D mesh = new MeshGeometry3D();
+
+      Point3D p1 = new Point3D(list[0].X, list[0].Y, z);
+
+      mesh.Positions.Add(p1);
+      mesh.Positions.Add(p2);
+      mesh.Positions.Add(p3);
+      mesh.Positions.Add(p4);
+      mesh.Positions.Add(p5);
+      mesh.Positions.Add(p6);
+      mesh.Positions.Add(p7);
+      mesh.Positions.Add(p8);
+
+      // gornja ploha
+      mesh.TriangleIndices.Add(0);
+      mesh.TriangleIndices.Add(1);
+      mesh.TriangleIndices.Add(2);
+
+      mesh.TriangleIndices.Add(0);
+      mesh.TriangleIndices.Add(2);
+      mesh.TriangleIndices.Add(3);
+
+      // donja ploha
+      mesh.TriangleIndices.Add(4);
+      mesh.TriangleIndices.Add(6);
+      mesh.TriangleIndices.Add(5);
+
+      mesh.TriangleIndices.Add(4);
+      mesh.TriangleIndices.Add(7);
+      mesh.TriangleIndices.Add(6);
+
+      // srednja 1 ploha
+      mesh.TriangleIndices.Add(0);
+      mesh.TriangleIndices.Add(5);
+      mesh.TriangleIndices.Add(1);
+
+      mesh.TriangleIndices.Add(0);
+      mesh.TriangleIndices.Add(4);
+      mesh.TriangleIndices.Add(5);
+
+      // srednja 2 ploha
+      mesh.TriangleIndices.Add(1);
+      mesh.TriangleIndices.Add(5);
+      mesh.TriangleIndices.Add(6);
+
+      mesh.TriangleIndices.Add(1);
+      mesh.TriangleIndices.Add(6);
+      mesh.TriangleIndices.Add(2);
+
+      // srednja 3 ploha
+      mesh.TriangleIndices.Add(2);
+      mesh.TriangleIndices.Add(6);
+      mesh.TriangleIndices.Add(7);
+
+      mesh.TriangleIndices.Add(2);
+      mesh.TriangleIndices.Add(7);
+      mesh.TriangleIndices.Add(3);
+
+      // srednja 4 ploha
+      mesh.TriangleIndices.Add(3);
+      mesh.TriangleIndices.Add(7);
+      mesh.TriangleIndices.Add(4);
+
+      mesh.TriangleIndices.Add(3);
+      mesh.TriangleIndices.Add(4);
+      mesh.TriangleIndices.Add(0);
+
+      return mesh;
+    }
+
     private void Viewbox_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
     {
 
