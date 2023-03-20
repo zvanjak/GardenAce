@@ -40,32 +40,32 @@ namespace EstateManager.Domain
         Transformations.LocalCoord(origin, pnt, out x, out y);
         // dodati točku u Polygon
 
-        LocalPolygon.ListPoints.Add(new Point2D(x, y));
+        LocalPolygon.ListPoints.Add(new Point2Cartesian(x, y));
       }
 
       //EstatePart part1 = new AuxiliaryBuilding("Skladište", "skladište");
       
       MML.Polygon2D zvVrt = new Polygon2D();
-      var partZVrt = new Garden("Zvonin vrt", new Polygon2D( new List<MML.Point2D> { new MML.Point2D(14, -60), 
-                                                                                     new MML.Point2D(14, -80), 
-                                                                                     new MML.Point2D(-4, -80), 
-                                                                                     new MML.Point2D(-4, -60) }));
+      var partZVrt = new Garden("Zvonin vrt", new Polygon2D( new List<MML.Point2Cartesian> { new MML.Point2Cartesian(14, -60), 
+                                                                                     new MML.Point2Cartesian(14, -80), 
+                                                                                     new MML.Point2Cartesian(-4, -80), 
+                                                                                     new MML.Point2Cartesian(-4, -60) }));
 
       MML.Polygon2D ivVrt = new Polygon2D();
-      ivVrt.ListPoints.Add(new MML.Point2D(14, -40));
-      ivVrt.ListPoints.Add(new MML.Point2D(14, -50));
-      ivVrt.ListPoints.Add(new MML.Point2D(-1.5, -50));
-      ivVrt.ListPoints.Add(new MML.Point2D(-1.5, -40)); 
+      ivVrt.ListPoints.Add(new MML.Point2Cartesian(14, -40));
+      ivVrt.ListPoints.Add(new MML.Point2Cartesian(14, -50));
+      ivVrt.ListPoints.Add(new MML.Point2Cartesian(-1.5, -50));
+      ivVrt.ListPoints.Add(new MML.Point2Cartesian(-1.5, -40)); 
       var partIVrt = new Garden("Ivankin vrt", ivVrt);
 
       //EstateParts.Add(part1);
       EstateParts.Add(partZVrt);
       EstateParts.Add(partIVrt);
 
-      GardenPlot zvKrumpiri = new GardenPlot(new DateTime(2022, 2, 1), "Krumpiri", partZVrt, new Polygon2D(new List<MML.Point2D> { new MML.Point2D(14, -62),
-                                                                                     new MML.Point2D(14, -80),
-                                                                                     new MML.Point2D(0, -80),
-                                                                                     new MML.Point2D(0, -62) }));
+      GardenPlot zvKrumpiri = new GardenPlot(new DateTime(2022, 2, 1), "Krumpiri", partZVrt, new Polygon2D(new List<MML.Point2Cartesian> { new MML.Point2Cartesian(14, -62),
+                                                                                     new MML.Point2Cartesian(14, -80),
+                                                                                     new MML.Point2Cartesian(0, -80),
+                                                                                     new MML.Point2Cartesian(0, -62) }));
       // 6 redova krumpira
       partZVrt.CurrentGardenPlots.Add(zvKrumpiri);
 

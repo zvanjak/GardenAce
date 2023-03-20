@@ -284,7 +284,7 @@ namespace EstateManager.MainApp
       return mesh;
     }
 
-    public static MeshGeometry3D CreatePolygon(List<MML.Point2D> list, double z )
+    public static MeshGeometry3D CreatePolygon(List<MML.Point2Cartesian> list, double z )
     {
       MeshGeometry3D mesh = new MeshGeometry3D();
 
