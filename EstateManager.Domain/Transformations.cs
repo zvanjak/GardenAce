@@ -45,7 +45,7 @@ namespace EstateManager.Domain
         y *= -1;
 
       // još rotacija
-      double phi = 19.9055 * 3.14159 / 180;
+      double phi = 22.9055 * 3.14159 / 180;
       x = x * Math.Cos(phi) - y * Math.Sin(phi);
       y = x * Math.Sin(phi) + y * Math.Cos(phi);
     }
