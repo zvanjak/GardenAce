@@ -93,14 +93,14 @@ namespace EstateManager.Domain
 
       EstateParts.Add(partIVrt2);
 
-      //MML.Polygon2D ivVrt3 = new Polygon2D();
-      //ivVrt3.ListPoints.Add(new MML.Point2Cartesian(-0.1, -180));
-      //ivVrt3.ListPoints.Add(new MML.Point2Cartesian(10, -180));
-      //ivVrt3.ListPoints.Add(new MML.Point2Cartesian(10, -190));
-      //ivVrt3.ListPoints.Add(new MML.Point2Cartesian(-0.1, -190));
-      //var partIVrt3 = new Garden("Ivankin vrt 2", ivVrt3);
+      MML.Polygon2D ivVrt3 = new Polygon2D();
+      ivVrt3.ListPoints.Add(new MML.Point2Cartesian(-14, -180));
+      ivVrt3.ListPoints.Add(new MML.Point2Cartesian(14, -180));
+      ivVrt3.ListPoints.Add(new MML.Point2Cartesian(14, -190));
+      ivVrt3.ListPoints.Add(new MML.Point2Cartesian(-14, -190));
+      var partIVrt3 = new Garden("Ivankin vrt 2", ivVrt3);
 
-      //EstateParts.Add(partIVrt3);
+      EstateParts.Add(partIVrt3);
 
       GardenPlot zvKrumpiri = new GardenPlot(new DateTime(2022, 2, 1), "Krumpiri", partZVrt, new Polygon2D(new List<MML.Point2Cartesian> { new MML.Point2Cartesian(14, -62),
                                                                                      new MML.Point2Cartesian(14, -80),
